@@ -1,6 +1,6 @@
 import { createApp, provide, h } from "vue";
 import { createPinia } from "pinia";
-import {provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
+import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
 
 import App from "./App.vue";
 import router from "./router";
@@ -8,13 +8,10 @@ import router from "./router";
 import "./assets/main.css";
 
 const app = createApp({
-    // setup () {
-    //     provideApolloClient(App.apolloClient)
-    //   },
     setup () {
-        provide(DefaultApolloClient, App.apolloClient)
+        provideApolloClient(App.apolloClient)
       },
-    
+      
     render: () => h(App),
   })
 
