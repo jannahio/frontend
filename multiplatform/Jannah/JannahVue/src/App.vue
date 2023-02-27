@@ -1,6 +1,23 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
+import BootView from "./views/BootView.vue";
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
+
+// HTTP connection to the API
+const httpLink = createHttpLink({
+  // You should use an absolute URL here
+  uri: 'http://localhost:3020/graphql',
+})
+
+// Cache implementation
+const cache = new InMemoryCache()
+
+// Create the apollo client
+const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache,
+})
 </script>
 
 <template>
@@ -17,8 +34,15 @@ import HelloWorld from "./components/HelloWorld.vue";
       <HelloWorld msg="You did it!" />
       <h1 class="text-3xl font-bold underline">Hello world!</h1>
       <nav>
+        <!-- <RouterLink to="/">Home</RouterLink> -->
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <!-- <RouterLink to="/about">About</RouterLink> -->
+        <RouterLink to="/boot">Boot</RouterLink>
+        <RouterLink to="/network">Network</RouterLink>
+        <RouterLink to="/storage">Storage</RouterLink>
+        <RouterLink to="/compute">Compute</RouterLink>
+        <RouterLink to="/ux">UX</RouterLink>
+        <RouterLink to="feedback">Feedback</RouterLink>
       </nav>
     </div>
   </header>
