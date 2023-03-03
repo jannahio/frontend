@@ -1,9 +1,11 @@
 import gql from "graphql-tag";
 
 export const SITE_INFO = gql`
-  query {
-    site {
-      name
-    }
-  }
+query getSite
+      {
+        site{
+          name
+          description
+        }
+}
 `;

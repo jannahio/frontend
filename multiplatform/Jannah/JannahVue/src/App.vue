@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
+// import SignUpView from "./views/SignUpView.vue";
 import BootView from "./views/BootView.vue";
-import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core'
+import { ApolloClient,  createHttpLink, InMemoryCache } from '@apollo/client/core'
 
 // HTTP connection to the API
 const httpLink = createHttpLink({
@@ -33,6 +34,8 @@ const apolloClient = new ApolloClient({
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
       <h1 class="text-3xl font-bold underline">Hello world!</h1>
+      <!-- <SignUpView /> -->
+      
       <nav>
         <!-- <RouterLink to="/">Home</RouterLink> -->
         <RouterLink to="/">Home</RouterLink>
@@ -45,6 +48,7 @@ const apolloClient = new ApolloClient({
         <RouterLink to="feedback">Feedback</RouterLink>
       </nav>
     </div>
+ 
   </header>
 
   <RouterView />
