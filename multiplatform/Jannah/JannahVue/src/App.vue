@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
 import HelloWorld from "./components/HelloWorld.vue";
-// import SignUpView from "./views/SignUpView.vue";
-import BootView from "./views/BootView.vue";
 import { ApolloClient,  createHttpLink, InMemoryCache } from '@apollo/client/core'
 
 // HTTP connection to the API
