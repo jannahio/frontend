@@ -66,3 +66,7 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+
+Give us an Idea, and we will help you Monitize (using machine learning, )it as a software product.
+Audience: people with lots of money, vision, and a problem(s) to solve.
