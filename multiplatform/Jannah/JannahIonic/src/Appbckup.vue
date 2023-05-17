@@ -4,8 +4,8 @@
       <ion-menu content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
-            <ion-list-header>Jannah</ion-list-header>
-            <ion-note>osman@jallohlab.com</ion-note>
+            <ion-list-header>Inbox</ion-list-header>
+            <ion-note>hi@ionicframework.com</ion-note>
 
             <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
               <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" :detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
@@ -66,69 +66,45 @@ import {
 const selectedIndex = ref(0);
 const appPages = [
   {
-    title: 'SignIn',
-    url: '/workflow/SignIn',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
+    title: 'Inbox',
+    url: '/folder/Inbox',
+    iosIcon: mailOutline,
+    mdIcon: mailSharp,
   },
   {
-    title: 'Register',
-    url: '/workflow/Register',
+    title: 'Outbox',
+    url: '/folder/Outbox',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp,
   },
   {
-    title: 'Index',
-    url: '/workflow/Index',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
+    title: 'Favorites',
+    url: '/folder/Favorites',
+    iosIcon: heartOutline,
+    mdIcon: heartSharp,
   },
   {
-    title: 'Boot',
-    url: '/workflow/Boot',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
+    title: 'Archived',
+    url: '/folder/Archived',
+    iosIcon: archiveOutline,
+    mdIcon: archiveSharp,
   },
   {
-    title: 'Network',
-    url: '/workflow/Network',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
+    title: 'Trash',
+    url: '/folder/Trash',
+    iosIcon: trashOutline,
+    mdIcon: trashSharp,
   },
   {
-    title: 'Storage',
-    url: '/workflow/Storage',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
-  },
-  {
-    title: 'Compute',
-    url: '/workflow/Compute',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
-  },
-  {
-    title: 'UX',
-    url: '/workflow/UX',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
-  }, 
-  {
-    title: 'Feedback',
-    url: '/workflow/Feedback',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
-  },
-  {
-    title: 'SignOut',
-    url: '/workflow/SignOut',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneOutline,
+    title: 'Spam',
+    url: '/folder/Spam',
+    iosIcon: warningOutline,
+    mdIcon: warningSharp,
   },
 ];
-const labels = ['Boot', 'Network', 'Storage', 'Compute', 'UX', 'Feedback'];
+const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-const path = window.location.pathname.split('workflow/')[1];
+const path = window.location.pathname.split('folder/')[1];
 if (path !== undefined) {
   selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
 }

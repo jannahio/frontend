@@ -4,11 +4,11 @@ import { RouteRecordRaw } from 'vue-router';
 const routes: Array<RouteRecordRaw> = [
   {
     path: '',
-    redirect: '/workflow/SignIn'
+    redirect: '/folder/Inbox'
   },
   {
-    path: '/workflow/:id',
-    component: () => import ('../views/WorkflowPage.vue')
+    path: '/folder/:id',
+    component: () => import ('../views/FolderPage.vue')
   }
 ]
 
