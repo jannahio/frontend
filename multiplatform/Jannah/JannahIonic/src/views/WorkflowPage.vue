@@ -18,9 +18,9 @@
 
       <div id="container">
         <strong class="capitalize">{{ $route.params.id }}</strong>
-        <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <!-- <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
         <component :is="$route.params.id" ></component>
-      
+        <SignIn />
 
       </div>
     </ion-content>
@@ -34,7 +34,7 @@ import { useUserStore } from "@/stores/user";
 import { USER_SIGNIN } from "@/mutations";
 
 import SignIn from "../components/SignIn.vue";
-import SignUp from "../components/SignUp.vue";
+//import SignUp from "../components/SignUp.vue";
 
 const router = useRouter();
 const route = useRoute();
