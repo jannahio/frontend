@@ -26,6 +26,27 @@
 
 <script setup lang="ts">
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { useRouter, useRoute } from 'vue-router';
+import { useUserStore } from "@/stores/user";
+import { USER_SIGNIN } from "@/mutations";
+
+const router = useRouter();
+const route = useRoute();
+const userStore = useUserStore();
+
+router.beforeEach(async (to, from) => {
+  if (
+    // make sure the user is authenticated
+    userStore.getToken === null &&
+    // ❗️ Avoid an infinite redirect
+    to.name !== 'SignIn'
+  ) {
+    //route.params.id = "SignIn";
+    userStore.setToken("1");
+    // redirect the user to the login page
+    return { name: 'SignIn' }
+  }
+})
 </script>
 
 <style scoped>
