@@ -19,6 +19,9 @@
       <div id="container">
         <strong class="capitalize">{{ $route.params.id }}</strong>
         <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <component :is="$route.params.id" ></component>
+      
+
       </div>
     </ion-content>
   </ion-page>
@@ -29,6 +32,9 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import { useRouter, useRoute } from 'vue-router';
 import { useUserStore } from "@/stores/user";
 import { USER_SIGNIN } from "@/mutations";
+
+import SignIn from "../components/SignIn.vue";
+import SignUp from "../components/SignUp.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -42,7 +48,7 @@ router.beforeEach(async (to, from) => {
     to.name !== 'SignIn'
   ) {
     //route.params.id = "SignIn";
-    userStore.setToken("1");
+    userStore.setToken("TOKEN");
     // redirect the user to the login page
     return { name: 'SignIn' }
   }

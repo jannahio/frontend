@@ -1,9 +1,12 @@
-import { createApp } from 'vue';
+import { createApp, h } from 'vue';
 import App from './App.vue';
 import router from './router';
 import { IonicVue } from '@ionic/vue';
-import { createPinia } from 'pinia'
+import { createPinia } from 'pinia';
 
+import Vue from 'vue';
+import VueApollo from 'vue-apollo';
+import VueApolloComponents from '@vue/apollo-components';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -23,11 +26,27 @@ import '@ionic/vue/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+
+import ApolloClient from 'apollo-boost';
+
+const apolloClient = new ApolloClient({
+  // You should use an absolute URL here
+  uri: 'http://localhost:3020/graphql'
+})
+
+import { createApolloProvider } from '@vue/apollo-option';
+
+const apolloProvider = createApolloProvider({
+  defaultClient: apolloClient,
+})
+
 const pinia = createPinia()
-const app = createApp(App)
-  .use(IonicVue)
+const app = createApp(App);
+app.use(IonicVue)
   .use(router)
-  .use(pinia);
+  .use(pinia)
+  .use(apolloProvider)
+  .use(VueApolloComponents);
 
 router.isReady().then(() => {
   app.mount('#app');
