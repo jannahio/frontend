@@ -6,7 +6,8 @@ import { createPinia } from 'pinia';
 
 import Vue from 'vue';
 import VueApollo from 'vue-apollo';
-import VueApolloComponents from '@vue/apollo-components';
+// import VueApolloComponents from '@vue/apollo-components';
+import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/vue/css/core.css';
@@ -40,13 +41,28 @@ const apolloProvider = createApolloProvider({
   defaultClient: apolloClient,
 })
 
+
+
+
 const pinia = createPinia()
 const app = createApp(App);
 app.use(IonicVue)
   .use(router)
   .use(pinia)
-  .use(apolloProvider)
-  .use(VueApolloComponents);
+  .use(apolloProvider);
+  //.use(VueApolloComponents);
+
+
+// const app = createApp({
+//   setup () {
+//       provideApolloClient(App.apolloClient)
+//     },
+    
+//   render: () => h(App),
+// })
+
+// app.use(createPinia());
+// app.use(router);
 
 router.isReady().then(() => {
   app.mount('#app');
