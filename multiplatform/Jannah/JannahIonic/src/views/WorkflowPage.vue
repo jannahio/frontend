@@ -17,11 +17,7 @@
       </ion-header>
 
       <div id="container">
-        <strong class="capitalize">{{ $route.params.id }}</strong>
-        <!-- <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
-        <component :is="$route.params.id" ></component>
-        <SignIn />
-
+        <component :is="active_workflows[$route.params.id]" ></component>
       </div>
     </ion-content>
   </ion-page>
@@ -32,13 +28,35 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import { useRouter, useRoute } from 'vue-router';
 import { useUserStore } from "@/stores/user";
 import { USER_SIGNIN } from "@/mutations";
-
+import { ref } from 'vue';
+//import CurrentWorkflow from "../components/CurrentWorkflow.vue";
 import SignIn from "../components/SignIn.vue";
-//import SignUp from "../components/SignUp.vue";
+import Register from "../components/Register.vue";
+import Boot from "../components/Boot.vue";
+import Network from "../components/Network.vue";
+import Storage from "../components/Storage.vue";
+import Compute from "../components/Compute.vue";
+import UX from "../components/UX.vue";
+import Feedback from "../components/Feedback.vue";
+import Dashboard from "../components/Dashboard.vue";
+import SignOut from "../components/SignOut.vue";
 
 const router = useRouter();
 const route = useRoute();
 const userStore = useUserStore();
+
+const active_workflows = {
+  SignIn,
+  Register,
+  Boot,
+  Network,
+  Storage,
+  Compute,
+  UX,
+  Feedback,
+  Dashboard,
+  SignOut
+}
 
 router.beforeEach(async (to, from) => {
   if (
@@ -53,6 +71,7 @@ router.beforeEach(async (to, from) => {
     return { name: 'SignIn' }
   }
 })
+
 </script>
 
 <style scoped>

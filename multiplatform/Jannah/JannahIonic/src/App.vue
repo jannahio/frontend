@@ -95,8 +95,8 @@ const appPages = [
     mdIcon: paperPlaneSharp,
   },
   {
-    title: 'Index',
-    url: '/workflow/Index',
+    title: 'Dashboard',
+    url: '/workflow/Dashboard',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneOutline,
   },

@@ -56,11 +56,11 @@ import { USER_SIGNIN } from "@/mutations";
 
 import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
-import { createApolloProvider } from '@vue/apollo-option';
+//import { createApolloProvider } from '@vue/apollo-option';
 
 
 export default {
-  name: "SignInView",
+  name: "SignIn",
 
     setup() {
       const userStore = useUserStore();
@@ -95,10 +95,6 @@ export default {
                     link: httpLink,
                     cache,
                   });  
-
-                  // const signinapolloProvider = createApolloProvider({
-                  //   defaultClient: signinapolloClient,
-                  // })
 
                   provideApolloClient(signinapolloClient);
                   const { mutate: userSignIn, loading: userSignInLoading,onError, error: userSignInError, onDone } = useMutation

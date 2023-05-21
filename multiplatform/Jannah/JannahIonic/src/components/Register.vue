@@ -1,9 +1,14 @@
 <script>
+import { useMutation } from '@vue/apollo-composable';
+import gql from 'graphql-tag';
 import { useUserStore } from "@/stores/user";
 import { USER_SIGNIN } from "@/mutations";
 
+import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
+
 export default {
-  name: "SignInView",
+  name: "SignUp",
 
   setup() {
     const userStore = useUserStore();
@@ -20,7 +25,7 @@ export default {
   },
 
   methods: {
-    async userSignIn() {
+    async userSignUp() {
       const user = await this.$apollo.mutate({
         mutation: USER_SIGNIN,
         variables: {
@@ -38,7 +43,7 @@ export default {
 
 <template>
   <div class="mx-auto h-screen w-full sm:w-2/3 md:w-1/3">
-    <form action="POST" @submit.prevent="userSignIn()">
+    <form action="POST" @submit.prevent="userSignUp()">
       <div class="bg-white rounded-xl w-full">
         <div class="space-y-4">
           <div>
@@ -65,13 +70,13 @@ export default {
         <button
           class="mt-4 w-full bg-teal-500 hover:bg-teal-700 focus:ring focus:ring-teal-100 text-white py-2 rounded-md text-lg tracking-wide"
         >
-          Sign In
+          Register
         </button>
         <div class="text-right">
           <small
             >Don't have an account? Try
-            <router-link to="/workflow/SignIn" class="text-teal-500 hover:underline"
-              >Sign Up</router-link
+            <router-link to="/workflow/Register" class="text-teal-500 hover:underline"
+              >Register</router-link
             >
             first.</small
           >
