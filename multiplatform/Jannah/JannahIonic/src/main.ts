@@ -53,17 +53,6 @@ app.use(IonicVue)
   //.use(VueApolloComponents);
 
 
-// const app = createApp({
-//   setup () {
-//       provideApolloClient(App.apolloClient)
-//     },
-    
-//   render: () => h(App),
-// })
-
-// app.use(createPinia());
-// app.use(router);
-
 router.isReady().then(() => {
   app.mount('#app');
 });
