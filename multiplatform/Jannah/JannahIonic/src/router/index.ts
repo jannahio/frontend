@@ -8,7 +8,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/workflow/:id',
-    component: () => import ('../views/WorkflowPage.vue'),
+    component: () => import ('@/views/WorkflowPage.vue'),
     meta: { requiresAuth: true }
   }
 ]
