@@ -29,6 +29,7 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 
 import ApolloClient from 'apollo-boost';
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 const apolloClient = new ApolloClient({
   // You should use an absolute URL here
@@ -44,7 +45,8 @@ const apolloProvider = createApolloProvider({
 
 
 
-const pinia = createPinia()
+const pinia = createPinia();
+
 const app = createApp(App);
 app.use(IonicVue)
   .use(router)
@@ -55,4 +57,5 @@ app.use(IonicVue)
 
 router.isReady().then(() => {
   app.mount('#app');
+  defineCustomElements(window);
 });
