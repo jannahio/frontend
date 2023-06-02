@@ -29,16 +29,13 @@
         >
           Sign In
         </button>
-      
-      
+    
         <div class="text-right">
           <small
             >Don't have an account? Try
-            <router-link to="/workflow/SignUp" class="text-teal-500 hover:underline"
-              >Sign Up</router-link
-            >
-            first.</small
-          >
+            <router-link to="/workflow/Register" class="text-teal-500 hover:underline"
+              >Sign Up</router-link>.
+              </small>
         </div>
         <div>
         
@@ -53,9 +50,10 @@ import { useMutation } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
 import { useUserStore } from "@/stores/user";
 import { USER_SIGNIN } from "@/mutations";
-
+import { useRouter, useRoute } from 'vue-router';
 import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
+import Dashboard from './Dashboard.vue';
 //import { createApolloProvider } from '@vue/apollo-option';
 
 
@@ -121,7 +119,8 @@ export default {
                 console.log(user);
                 this.userStore.setToken(user.token);
                 this.userStore.setUser(user);
-                
+                const router = useRouter();
+                this.$router.push('/workflow/Dashboard');
               })
               userSignIn();
                   
