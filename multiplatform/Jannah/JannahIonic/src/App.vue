@@ -67,7 +67,7 @@ import { ApolloClient,  createHttpLink, InMemoryCache } from '@apollo/client/cor
 // HTTP connection to the API
 const httpLink = createHttpLink({
   // You should use an absolute URL here
-  uri: 'http://localhost:3020/graphql',
+  uri: 'http://localhost:8000/graphql',
 })
 
 // Cache implementation
@@ -99,6 +99,7 @@ const appPages = [
     url: '/workflow/Dashboard',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneOutline,
+    name: 'Dashboard',
   },
   {
     title: 'Boot',

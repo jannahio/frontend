@@ -59,17 +59,30 @@ const active_workflows = {
 }
 
 router.beforeEach(async (to, from) => {
+  // If the user has not sign in yet,
+  // redirect them to the signIn
   if (
     // make sure the user is authenticated
     userStore.getToken === null &&
     // ❗️ Avoid an infinite redirect
-    to.name !== 'SignIn'
+    to.params.id !== 'SignIn'
   ) {
-    //route.params.id = "SignIn";
-    userStore.setToken("TOKEN");
     // redirect the user to the login page
     return { name: 'SignIn' }
   }
+  // console.log("to_variable");
+  console.log(to);
+  // If the user has already signed in
+  // and are attempting to click on the SignIn button
+  // then redirect them to the Dashboard
+  if (
+    // make sure the user is authenticated
+    userStore.getToken != null &&
+    to.params.id === 'SignIn'
+  ) {
+    // redirect the user to the login page
+    to.params.id = 'Dashboard';
+  } 
 })
 
 </script>
