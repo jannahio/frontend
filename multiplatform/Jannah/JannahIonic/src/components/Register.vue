@@ -98,6 +98,9 @@ export default {
 
       this.userStore.setToken(user.data.tokenAuth.token);
       this.userStore.setUser(user.data.tokenAuth.user);
+      this.$router.replace({ path: '/' });
+      // Programmatic Navigation
+      // https://router.vuejs.org/guide/essentials/navigation.html#navigate-to-a-different-location
     },
   },
 };
