@@ -65,10 +65,11 @@ router.beforeEach(async (to, from) => {
     // make sure the user is authenticated
     userStore.getToken === null &&
     // ❗️ Avoid an infinite redirect
-    to.params.id !== 'SignIn'
+    (to.params.id !== 'SignIn' &&
+    to.params.id !== 'Register') 
   ) {
     // redirect the user to the login page
-    return { name: 'SignIn' }
+    return { id: 'SignIn' }
   }
   // console.log("to_variable");
   console.log(to);
@@ -78,7 +79,7 @@ router.beforeEach(async (to, from) => {
   if (
     // make sure the user is authenticated
     userStore.getToken != null &&
-    to.params.id === 'SignIn'
+    (to.params.id === 'SignIn' || to.params.id === 'Register')
   ) {
     // redirect the user to the login page
     to.params.id = 'Dashboard';
