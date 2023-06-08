@@ -27,6 +27,7 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { useRouter, useRoute } from 'vue-router';
 import { useUserStore } from "@/stores/user";
+import { useIonicUserStore } from "@/stores/ionic_user";
 import { USER_SIGNIN } from "@/mutations";
 import { ref } from 'vue';
 //import CurrentWorkflow from "../components/CurrentWorkflow.vue";
@@ -59,11 +60,17 @@ const active_workflows = {
 }
 
 router.beforeEach(async (to, from) => {
+  const ionicNavUserStore = await useIonicUserStore.create();
+  console.log("beforeEach.ionicNavUserStore: " + ionicNavUserStore);
+  const _ionicNavUserToken = await ionicNavUserStore.get('ionicUserToken');
+  const _ionicNavUser = await ionicNavUserStore.get('ionicUser');
+  console.log("beforeEac--_ionicNavUser: ",_ionicNavUser);
+  console.log("beforeEac--_ionicNavUserToken: " + _ionicNavUserToken);
   // If the user has not sign in yet,
   // redirect them to the signIn
   if (
     // make sure the user is authenticated
-    userStore.getToken === null &&
+    _ionicNavUserToken === null &&
     // ❗️ Avoid an infinite redirect
     (to.params.id !== 'SignIn' &&
     to.params.id !== 'Register') 
@@ -78,12 +85,35 @@ router.beforeEach(async (to, from) => {
   // then redirect them to the Dashboard
   if (
     // make sure the user is authenticated
-    userStore.getToken != null &&
+    _ionicNavUserToken != null &&
     (to.params.id === 'SignIn' || to.params.id === 'Register')
   ) {
     // redirect the user to the login page
     to.params.id = 'Dashboard';
   } 
+  // if (
+  //   // make sure the user is authenticated
+  //   userStore.getToken === null &&
+  //   // ❗️ Avoid an infinite redirect
+  //   (to.params.id !== 'SignIn' &&
+  //   to.params.id !== 'Register') 
+  // ) {
+  //   // redirect the user to the login page
+  //   return { id: 'SignIn' }
+  // }
+  // // console.log("to_variable");
+  // console.log(to);
+  // // If the user has already signed in
+  // // and are attempting to click on the SignIn button
+  // // then redirect them to the Dashboard
+  // if (
+  //   // make sure the user is authenticated
+  //   userStore.getToken != null &&
+  //   (to.params.id === 'SignIn' || to.params.id === 'Register')
+  // ) {
+  //   // redirect the user to the login page
+  //   to.params.id = 'Dashboard';
+  // } 
 })
 
 </script>

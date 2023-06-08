@@ -42,7 +42,7 @@
                 <div class="text-right">
           <small
             >Already have an account? Try
-            <router-link to="/workflow/Register" class="text-teal-500 hover:underline"
+            <router-link to="/workflow/SignIn" class="text-teal-500 hover:underline"
               >Sign In</router-link
             >
             first.</small
@@ -55,6 +55,7 @@
 
 <script>
 import { useUserStore } from "@/stores/user";
+import { useIonicUserStore } from "@/stores/ionic_user";
 import { USER_SIGNUP, USER_SIGNIN } from "@/mutations";
 
 export default {
@@ -98,6 +99,10 @@ export default {
 
       this.userStore.setToken(user.data.tokenAuth.token);
       this.userStore.setUser(user.data.tokenAuth.user);
+      const ionicRegisterUserStore = await useIonicUserStore.create();
+      await ionicRegisterUserStore.set('ionicUserToken', user.data.tokenAuth.token);
+      const _ionicRegisterUserToken = await ionicRegisterUserStore.set('ionicUserToken', user.data.tokenAuth.token);
+      const _ionicUser = await ionicRegisterUserStore.set('_ionicRegisterUserToken', user.data.tokenAuth.user);
       this.$router.replace({ path: '/' });
       // Programmatic Navigation
       // https://router.vuejs.org/guide/essentials/navigation.html#navigate-to-a-different-location
