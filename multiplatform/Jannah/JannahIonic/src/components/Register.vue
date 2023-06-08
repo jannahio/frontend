@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { useUserStore } from "@/stores/user";
+// import { useUserStore } from "@/stores/user";
 import { useIonicUserStore } from "@/stores/ionic_user";
 import { USER_SIGNUP, USER_SIGNIN } from "@/mutations";
 
@@ -62,7 +62,7 @@ export default {
   name: "Register",
 
   setup() {
-    const userStore = useUserStore();
+    const userStore = '';
     return { userStore };
   },
 
@@ -97,8 +97,8 @@ export default {
         },
       });
 
-      this.userStore.setToken(user.data.tokenAuth.token);
-      this.userStore.setUser(user.data.tokenAuth.user);
+      //this.userStore.setToken(user.data.tokenAuth.token);
+      //this.userStore.setUser(user.data.tokenAuth.user);
       const ionicRegisterUserStore = await useIonicUserStore.create();
       await ionicRegisterUserStore.set('ionicUserToken', user.data.tokenAuth.token);
       const _ionicRegisterUserToken = await ionicRegisterUserStore.set('ionicUserToken', user.data.tokenAuth.token);
