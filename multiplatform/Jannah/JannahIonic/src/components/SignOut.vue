@@ -14,14 +14,14 @@
   </div>
 </template>
 <script>
-import { useUserStore } from "@/stores/user";
+// import { useUserStore } from "@/stores/user";
 import { useIonicUserStore } from "@/stores/ionic_user";
 
 export default {
   name: "SignOut",
 
     setup() {
-      const userStore = useUserStore();
+      const userStore = '';
       return { userStore };
     },
     data() {
@@ -36,8 +36,8 @@ export default {
     {
           async userSignOut() 
           {
-            this.userStore.removeToken();
-            this.userStore.removeUser();
+            //this.userStore.removeToken();
+            //this.userStore.removeUser();
 
             const ionicSignOutUserStore = await useIonicUserStore.create();
             console.log("ionicSignOutUserStore", ionicSignOutUserStore);

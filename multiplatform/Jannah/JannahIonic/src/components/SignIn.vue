@@ -48,7 +48,7 @@
 import { computed, watch } from 'vue'
 import { useMutation } from '@vue/apollo-composable';
 import gql from 'graphql-tag';
-import { useUserStore } from "@/stores/user";
+// import { useUserStore } from "@/stores/user";
 import { useIonicUserStore } from "@/stores/ionic_user";
 import { USER_SIGNIN } from "@/mutations";
 import { useRouter, useRoute } from 'vue-router';
@@ -62,8 +62,7 @@ export default {
      name: "SignIn",
 
     setup() {
-      const userStore = useUserStore();
-      // const ionicUserStore = useIonicUserStore;
+      const userStore = '';
       return { userStore };
     },
 
@@ -90,13 +89,13 @@ export default {
                     },
                   });
                   console.log(user.data.tokenAuth);
-                  this.userStore.setToken(user.data.tokenAuth.token);
+                  //this.userStore.setToken(user.data.tokenAuth.token);
                   const ionicSignInUserStore = await useIonicUserStore.create();
                   console.log(ionicSignInUserStore);
                   await ionicSignInUserStore.set('ionicUserToken', user.data.tokenAuth.token);
                   const _ionicSignInUserToken = await ionicSignInUserStore.set('ionicUserToken', user.data.tokenAuth.token);
                   console.log(_ionicSignInUserToken);
-                  this.userStore.setUser(user.data.tokenAuth.user); 
+                  //this.userStore.setUser(user.data.tokenAuth.user); 
                   const _ionicUser = await ionicSignInUserStore.set('ionicUser', user.data.tokenAuth.user); 
                   console.log("" + ionicSignInUserStore); 
                   this.$router.push('/workflow/Dashboard');  
