@@ -15,6 +15,7 @@
 </template>
 <script>
 import { useUserStore } from "@/stores/user";
+import { useIonicUserStore } from "@/stores/ionic_user";
 
 export default {
   name: "SignOut",
@@ -37,9 +38,18 @@ export default {
           {
             this.userStore.removeToken();
             this.userStore.removeUser();
+
+            const ionicSignOutUserStore = await useIonicUserStore.create();
+            console.log("ionicSignOutUserStore", ionicSignOutUserStore);
+            await ionicSignOutUserStore.remove('ionicUserToken');
+            await ionicSignOutUserStore.remove('ionicUser');
+            await ionicSignOutUserStore.clear();
+            const validate__remove_Token = await ionicSignOutUserStore.get('ionicUserToken');
+            const validate__remove_User = await ionicSignOutUserStore.get('ionicUser');
+            console.log("validate__remove_Token", validate__remove_Token);
+            console.log("validate__remove_User", validate__remove_User);
             this.$router.push('/workflow/SignIn');    
           },
     },
 };
 </script>
-
