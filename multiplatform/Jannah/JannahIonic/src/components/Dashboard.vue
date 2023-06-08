@@ -21,45 +21,95 @@ const computeapolloClient = new ApolloClient({
 });
 
 export default {
-  setup () 
-  {
-    provideApolloClient(computeapolloClient);
-    const { result, loading,  error, onResult , onError } = useQuery
-    (
-      gql`
-      query getComputes 
-      {
-        allComputes
-        {
-          name,
-          description
-        }
-      }
-    `)
-    const allComputes = computed(() => result.value?.allComputes ?? [])
-    onResult(queryResult => {
-      console.log(queryResult.data)
-      console.log(queryResult.loading)
-  //    console.log(queryResult.networkStatus)
-      console.log(queryResult.stale)
-    });
-    onError(error => {
-      logErrorMessages(error)
-    })
-   return {
-    allComputes,
-    loading,
-    error,
-    }
-  },
+  data() {
+      return {
+        error: '',
+      };
+    },
+  apollo: {
+      allComputes: {
+        query: gql`
+            query getComputes
+            {
+              allComputes
+              {
+                name,
+                description
+              }
+            }
+        `,
+        data () {
+          return {
+            // Initialize your apollo data
+            allComputess: [],
+            loadingComputeQueriesCount: 0
+          }
+        },
+        update (data) {
+          console.log(data);
+          // The returned value will update
+          // the vue property 'pingMessage'
+          //this.loading = loading;
+          //this.networkStatus = networkStatus;
+          return data.allComputes;
+        },
+        // Optional result hook
+        result ({ data, loading, networkStatus }) {
+          console.log('We got some result!')
+        },
+        // Error handling
+        error (error) {
+          console.error('We\'ve got an error!', error);
+          this.error = error;
+        },
+        // Loading state
+        loadingKey: 'loadingComputeQueriesCount',
+        // watchLoading will be called whenever the loading state changes
+        watchLoading (isLoading, countModifier) {
+          // isLoading is a boolean
+          // countModifier is either 1 or -1
+        },
+      },
+    },
+  // setup () 
+  // {
+  //   provideApolloClient(computeapolloClient);
+  //   const { result, loading,  error, onResult , onError } = useQuery
+  //   (
+  //     gql`
+  //     query getComputes 
+  //     {
+  //       allComputes
+  //       {
+  //         name,
+  //         description
+  //       }
+  //     }
+  //   `)
+  //   const allComputes = computed(() => result.value?.allComputes ?? [])
+  //   onResult(queryResult => {
+  //     console.log(queryResult.data)
+  //     console.log(queryResult.loading)
+  // //    console.log(queryResult.networkStatus)
+  //     console.log(queryResult.stale)
+  //   });
+  //   onError(error => {
+  //     logErrorMessages(error)
+  //   })
+  //  return {
+    // allComputes,
+    // loading,
+    // error,
+  //   }
+  // },
 };
 </script>
 
 <template>
-  <div class="dashboard">
-    <h1>This is a Dashboard page</h1>
-    <div v-if="loading">Loading...</div>
-    <div v-else-if="error">Error: {{ error.message }}</div>
+  <div class="compute">
+    <h1>This is a Compute page</h1>
+    <div v-if="loadingComputeQueriesCount">Loading...</div>
+    <div v-else-if="error"> {{ error.message }}</div>
     <ul v-else-if="allComputes">
       <li v-for="compute of allComputes" :key="compute.name">
         {{ compute.name }} - {{ compute.description }}

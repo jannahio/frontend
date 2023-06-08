@@ -58,7 +58,7 @@ import Dashboard from './Dashboard.vue';
 
 
 export default {
-  name: "SignIn",
+     name: "SignIn",
 
     setup() {
       const userStore = useUserStore();
@@ -71,61 +71,79 @@ export default {
           username: "",
           password: "",
         },
+        error: '',
       };
     },
-
     methods: 
     {
           async userSignIn() 
           {
 
-                  // HTTP connection to the API
-                  const httpLink = createHttpLink({
-                    // You should use an absolute URL here
-                    uri: 'http://localhost:8000/graphql',
+                  // Sign in
+                  const user = await this.$apollo.mutate({
+                    mutation: USER_SIGNIN,
+                    variables: {
+                      username: this.signInDetails.username,
+                      password: this.signInDetails.password,
+                    },
                   });
-
-                  // Cache implementation
-                  const cache = new InMemoryCache();
-
-                  // Create the apollo client
-                  const signinapolloClient = new ApolloClient({
-                    link: httpLink,
-                    cache,
-                  });  
-
-                  provideApolloClient(signinapolloClient);
-                  const { mutate: userSignIn, loading: userSignInLoading,onError, error: userSignInError, onDone } = useMutation
-                  (
-                        USER_SIGNIN,
-                        () =>  (
-                                    {
-
-                                      variables: {
-                                                    username: this.signInDetails.username,
-                                                    password: this.signInDetails.password,
-                                                  }
-
-                                     }
-                              )
-                );
-
-              onDone(result => {
-                console.log(result.data.tokenAuth);
-                //user = computed(() => result.data.tokenAuth.user);
-                let user = {};
-                user = result.data.tokenAuth.user
-                user.token = result.data.tokenAuth.token;
-                console.log(user);
-                this.userStore.setToken(user.token);
-                this.userStore.setUser(user);
-                const router = useRouter();
-                this.$router.push('/workflow/Dashboard');
-              })
-              userSignIn();
-                  
+                  console.log(user.data.tokenAuth);
+                  this.userStore.setToken(user.data.tokenAuth.token);
+                  this.userStore.setUser(user.data.tokenAuth.user);    
           },
     },
+    // methods: 
+    // {
+    //       async userSignIn() 
+    //       {
+
+    //               // HTTP connection to the API
+    //               const httpLink = createHttpLink({
+    //                 // You should use an absolute URL here
+    //                 uri: 'http://localhost:8000/graphql',
+    //               });
+
+    //               // Cache implementation
+    //               const cache = new InMemoryCache();
+
+    //               // Create the apollo client
+    //               const signinapolloClient = new ApolloClient({
+    //                 link: httpLink,
+    //                 cache,
+    //               });  
+
+    //               provideApolloClient(signinapolloClient);
+    //               const { mutate: userSignIn, loading: userSignInLoading,onError, error: userSignInError, onDone } = useMutation
+    //               (
+    //                     USER_SIGNIN,
+    //                     () =>  (
+    //                                 {
+
+    //                                   variables: {
+    //                                                 username: this.signInDetails.username,
+    //                                                 password: this.signInDetails.password,
+    //                                               }
+
+    //                                  }
+    //                           )
+    //             );
+
+    //           onDone(result => {
+    //             console.log(result.data.tokenAuth);
+    //             //user = computed(() => result.data.tokenAuth.user);
+    //             let user = {};
+    //             user = result.data.tokenAuth.user
+    //             user.token = result.data.tokenAuth.token;
+    //             console.log(user);
+    //             this.userStore.setToken(user.token);
+    //             this.userStore.setUser(user);
+    //             const router = useRouter();
+    //             this.$router.push('/workflow/Dashboard');
+    //           })
+    //           userSignIn();
+                  
+    //       },
+    // },
 };
 </script>
 
