@@ -20,7 +20,7 @@ struct ContentView: View {
 
 
             VStack(alignment: .leading) {
-                Text("Jannah Operaror")
+                Text("Jannah Operator")
                     .font(.title)
 
 
