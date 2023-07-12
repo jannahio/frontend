@@ -18,7 +18,6 @@
 		306878A32A37C4E100A53CB4 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306878A22A37C4E100A53CB4 /* CircleImage.swift */; };
 		306878A52A37CD9D00A53CB4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 306878A42A37CD9D00A53CB4 /* MapView.swift */; };
 		30D678862A39141000CC580A /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 30D678852A39141000CC580A /* Apollo */; };
-		30D678882A392D5F00CC580A /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = 30D678872A392D5F00CC580A /* schema.json */; };
 		30D6788A2A393EC900CC580A /* allComputes.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 30D678892A393EC900CC580A /* allComputes.graphql */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +54,6 @@
 		301AC6472A3A8759000FD2DD /* graphql */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = graphql; sourceTree = "<group>"; };
 		306878A22A37C4E100A53CB4 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		306878A42A37CD9D00A53CB4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		30D678872A392D5F00CC580A /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
 		30D678892A393EC900CC580A /* allComputes.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = allComputes.graphql; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -90,7 +88,6 @@
 			children = (
 				301AC6472A3A8759000FD2DD /* graphql */,
 				301AC6432A3A5F32000FD2DD /* apollo-codegen-config.json */,
-				30D678872A392D5F00CC580A /* schema.json */,
 				30D678892A393EC900CC580A /* allComputes.graphql */,
 				301348082A33D41C00ECD52A /* Jannah */,
 				3013481A2A33D41D00ECD52A /* JannahTests */,
@@ -260,7 +257,6 @@
 			files = (
 				301348122A33D41D00ECD52A /* Preview Assets.xcassets in Resources */,
 				30D6788A2A393EC900CC580A /* allComputes.graphql in Resources */,
-				30D678882A392D5F00CC580A /* schema.json in Resources */,
 				301AC6442A3A5F32000FD2DD /* apollo-codegen-config.json in Resources */,
 				3013480E2A33D41D00ECD52A /* Assets.xcassets in Resources */,
 			);
