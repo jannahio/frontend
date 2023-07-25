@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id("com.apollographql.apollo3").version("3.8.2")
 }
 
 android {
     namespace 'io.jannah.jannah'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "io.jannah.jannah"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -65,4 +66,12 @@ dependencies {
     androidTestImplementation 'androidx.compose.ui:ui-test-junit4'
     debugImplementation 'androidx.compose.ui:ui-tooling'
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
+
+    implementation("com.apollographql.apollo3:apollo-runtime:3.8.2")
+}
+
+apollo {
+    service("service") {
+        packageName.set("io.jannah.jannah")
+    }
 }

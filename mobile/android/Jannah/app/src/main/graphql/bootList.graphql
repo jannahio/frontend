@@ -1,0 +1,8 @@
+query getBoots
+{
+    allBoots
+    {
+        name,
+        description
+    }
+}
