@@ -1,0 +1,9 @@
+query getSites
+{
+    allSites{
+        id,
+        name,
+        description,
+        logo
+    }
+}

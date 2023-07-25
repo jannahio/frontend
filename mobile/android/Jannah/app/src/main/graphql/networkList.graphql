@@ -1,0 +1,8 @@
+query getNertworks
+{
+    allNetworks
+    {
+        name,
+        description
+    }
+}

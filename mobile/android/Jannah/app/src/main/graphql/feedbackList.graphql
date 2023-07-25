@@ -1,0 +1,8 @@
+query getFeedbacks
+{
+    allFeedbacks
+    {
+        name,
+        description
+    }
+}
