@@ -1,0 +1,10 @@
+
+query getBootList
+{
+    allBoots{
+        id,
+        name,
+        slug,
+        description
+    }
+}

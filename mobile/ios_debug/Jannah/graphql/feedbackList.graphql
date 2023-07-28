@@ -1,0 +1,10 @@
+query getFeedbackList
+{
+    allFeedbacks{
+        id,
+        name,
+        slug,
+        description
+    }
+}
+

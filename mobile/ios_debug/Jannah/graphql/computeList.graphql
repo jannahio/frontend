@@ -1,0 +1,12 @@
+
+query getComputeList
+{
+    allComputes{
+        id,
+        name,
+        slug,
+        description
+    }
+}
+
+

@@ -1,0 +1,21 @@
+query getUserList
+{
+        allUsers{
+            id,
+            lastLogin,
+            isSuperuser,
+            username,
+            firstName,
+            lastName,
+            email,
+            isActive,
+            dateJoined,
+            avatar,
+            bio,
+            location,
+            website,
+            joinedDate
+        }
+}
+
+

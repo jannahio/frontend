@@ -1,0 +1,11 @@
+query getUXList
+{
+    allUxs{
+        id,
+        name,
+        slug,
+        description
+    }
+}
+
+

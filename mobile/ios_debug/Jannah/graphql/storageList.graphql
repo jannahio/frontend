@@ -1,0 +1,11 @@
+query getStorageList
+{
+    allStorages{
+        id,
+        name,
+        slug,
+        description
+    }
+}
+
+

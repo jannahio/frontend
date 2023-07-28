@@ -1,0 +1,12 @@
+
+query getNetworkList
+{
+    allNetworks{
+        id,
+        name,
+        slug,
+        description
+    }
+}
+
+

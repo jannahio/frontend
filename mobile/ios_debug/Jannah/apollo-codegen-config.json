@@ -1,0 +1,43 @@
+{
+  "schemaNamespace" : "io.jannah.jannah",
+  "input" : {
+    "operationSearchPaths" : [
+      "**/*.graphql"
+    ],
+    "schemaSearchPaths" : [
+      "**/*.graphqls"
+    ]
+  },
+  "output" : {
+    "testMocks" : {
+      "none" : {
+      }
+    },
+    "schemaTypes" : {
+      "path" : "./io.jannah.jannah",
+      "moduleType" : {
+        "swiftPackageManager" : {
+        }
+      }
+    },
+    "operations" : {
+      "inSchemaModule" : {
+      }
+    }
+  },
+  "schemaDownloadConfiguration": {
+      "downloadMethod": {
+          "introspection": {
+              "endpointURL": "http://127.0.0.1:8000/graphql",
+              "httpMethod": {
+                  "POST": {}
+              },
+              "includeDeprecatedInputValues": false,
+              "outputFormat": "SDL"
+          }
+      },
+      "downloadTimeout": 60,
+      "headers": [],
+      "outputPath": "./graphql/schema.graphqls"
+  }
+}

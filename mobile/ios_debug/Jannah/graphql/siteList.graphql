@@ -1,0 +1,13 @@
+
+query getSiteList
+{
+   allSites{
+                id,
+                name,
+                description,
+                logo
+            
+    }
+}
+
+
