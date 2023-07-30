@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30680EA72A74F83C0028A7C3 /* JannahAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 30680EA62A74F83C0028A7C3 /* JannahAPI */; };
 		3068B5D82A74042300F33F54 /* JannahApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3068B5D72A74042300F33F54 /* JannahApp.swift */; };
 		3068B5DA2A74042300F33F54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3068B5D92A74042300F33F54 /* ContentView.swift */; };
 		3068B5DC2A74042400F33F54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3068B5DB2A74042400F33F54 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		30680EA52A74F82C0028A7C3 /* JannahAPI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JannahAPI; sourceTree = "<group>"; };
 		3068B5D42A74042300F33F54 /* Jannah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jannah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3068B5D72A74042300F33F54 /* JannahApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JannahApp.swift; sourceTree = "<group>"; };
 		3068B5D92A74042300F33F54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30680EA72A74F83C0028A7C3 /* JannahAPI in Frameworks */,
 				3068B6052A74068600F33F54 /* ApolloAPI in Frameworks */,
 				3068B60D2A74068600F33F54 /* ApolloWebSocket in Frameworks */,
 				3068B60B2A74068600F33F54 /* ApolloTestSupport in Frameworks */,
@@ -87,15 +90,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		30680EA12A74D3360028A7C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		30680EA42A74F82C0028A7C3 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				30680EA52A74F82C0028A7C3 /* JannahAPI */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		3068B5CB2A74042300F33F54 = {
 			isa = PBXGroup;
 			children = (
+				30680EA42A74F82C0028A7C3 /* Packages */,
 				3068B6102A742BF800F33F54 /* graphql */,
 				3068B60E2A741BF700F33F54 /* apollo-codegen-config.json */,
 				3068B5D62A74042300F33F54 /* Jannah */,
 				3068B5E72A74042400F33F54 /* JannahTests */,
 				3068B5F12A74042400F33F54 /* JannahUITests */,
 				3068B5D52A74042300F33F54 /* Products */,
+				30680EA12A74D3360028A7C3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +188,7 @@
 				3068B6082A74068600F33F54 /* ApolloSQLite */,
 				3068B60A2A74068600F33F54 /* ApolloTestSupport */,
 				3068B60C2A74068600F33F54 /* ApolloWebSocket */,
+				30680EA62A74F83C0028A7C3 /* JannahAPI */,
 			);
 			productName = Jannah;
 			productReference = 3068B5D42A74042300F33F54 /* Jannah.app */;
@@ -627,6 +648,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		30680EA62A74F83C0028A7C3 /* JannahAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JannahAPI;
+		};
 		3068B6022A74068600F33F54 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3068B6012A74068600F33F54 /* XCRemoteSwiftPackageReference "apollo-ios" */;
