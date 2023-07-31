@@ -14,6 +14,8 @@ class WorkflowListViewModel: ObservableObject {
     @Published var appAlert: AppAlert?
     @Published var notificationMessage: String?
     
+
+    
     init() {
         // TODO (Section 13 - https://www.apollographql.com/docs/ios/tutorial/tutorial-subscriptions#use-your-subscription)
         Network.shared.apollo.fetch(query: GetBootListQuery()) { result in
