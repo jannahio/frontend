@@ -1,0 +1,10 @@
+query WorkflowList{
+workflows{
+  cursor,
+  hasMore,
+  workflows{
+    id,
+    description
+  }
+}
+}

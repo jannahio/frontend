@@ -13,12 +13,20 @@ class WorkflowListViewModel: ObservableObject {
     
     @Published var appAlert: AppAlert?
     @Published var notificationMessage: String?
-    
+    @Published var workflows = [GetWorkflowListQuery.Data.AllWorkflows]()
+//    @Published var allSites = [GetWorkflowListQuery.Data.AllSite]()
+//    @Published var allBoots = [GetWorkflowListQuery.Data.AllBoot]()
+//    @Published var allNetworks = [GetWorkflowListQuery.Data.AllNetwork]()
+//    @Published var allStorages = [GetWorkflowListQuery.Data.AllStorage]()
+//    @Published var allComputes = [GetWorkflowListQuery.Data.AllCompute]()
+//    @Published var allUXs = [GetWorkflowListQuery.Data.AllUx]()
+//    @Published var allFeedbacks = [GetWorkflowListQuery.Data.AllFeedback]()
+//
 
     
     init() {
         // TODO (Section 13 - https://www.apollographql.com/docs/ios/tutorial/tutorial-subscriptions#use-your-subscription)
-        Network.shared.apollo.fetch(query: GetBootListQuery()) { result in
+        Network.shared.apollo.fetch(query: GetWorkflowListQuery()) { result in
             switch result {
             case .success(let graphQLResult):
                 print("Success! Result: \(graphQLResult)")
@@ -54,6 +62,24 @@ class WorkflowListViewModel: ObservableObject {
     
     func loadMoreWorkflows() {
         // TODO (Section 6 - https://www.apollographql.com/docs/ios/tutorial/tutorial-connect-queries-to-ui#configure-launchlistviewmodel)
+        Network.shared.apollo.fetch(query: GetWorkflowListQuery()) { [weak self] result in
+            guard let self = self else {
+                return
+            }
+
+            switch result {
+            case .success(let graphQLResult):
+                if let workflowConnection = graphQLResult.data?.  {
+                    self.workflows.append(contentsOf: workflowConnection.workflows.compactMap({ $0 }))
+                }
+
+                if let errors = graphQLResult.errors {
+                    self.appAlert = .errors(errors: errors)
+                }
+            case .failure(let error):
+                self.appAlert = .errors(errors: [error])
+            }
+        }
     }
     
 }
