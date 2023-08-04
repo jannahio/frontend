@@ -10,7 +10,7 @@ import SwiftUI
 import JannahApi
 
 struct WorkflowRow: View {
-    let workflow: GetWorkflowListQuery.Data.AllWorkflows.WorkflowList.
+    let workflow: WorkflowListQuery.Data.Workflows.Workflow
     private let placeholderImg = Image("Universal 2x")
     
     var body: some View {
@@ -22,7 +22,7 @@ struct WorkflowRow: View {
             
             VStack(alignment: .leading) {
                 Text("Workflow Name")
-                Text(workflow.name? "Launch Site")
+                Text(workflow.name)
                     .font(.system(size: 14))
             }
             Spacer()

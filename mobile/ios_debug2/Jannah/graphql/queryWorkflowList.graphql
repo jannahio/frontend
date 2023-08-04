@@ -4,6 +4,7 @@ workflows{
   hasMore,
   workflows{
     id,
+    name,
     description
   }
 }

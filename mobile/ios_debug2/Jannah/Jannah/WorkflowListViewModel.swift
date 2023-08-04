@@ -7,26 +7,21 @@
 
 import Foundation
 import SwiftUI
+import Apollo
 import JannahApi
+
 
 class WorkflowListViewModel: ObservableObject {
     
     @Published var appAlert: AppAlert?
     @Published var notificationMessage: String?
-    @Published var workflows = [GetWorkflowListQuery.Data.AllWorkflows]()
-//    @Published var allSites = [GetWorkflowListQuery.Data.AllSite]()
-//    @Published var allBoots = [GetWorkflowListQuery.Data.AllBoot]()
-//    @Published var allNetworks = [GetWorkflowListQuery.Data.AllNetwork]()
-//    @Published var allStorages = [GetWorkflowListQuery.Data.AllStorage]()
-//    @Published var allComputes = [GetWorkflowListQuery.Data.AllCompute]()
-//    @Published var allUXs = [GetWorkflowListQuery.Data.AllUx]()
-//    @Published var allFeedbacks = [GetWorkflowListQuery.Data.AllFeedback]()
-//
+    @Published var workflows = [WorkflowListQuery.Data.Workflows.Workflow]()
 
     
     init() {
         // TODO (Section 13 - https://www.apollographql.com/docs/ios/tutorial/tutorial-subscriptions#use-your-subscription)
-        Network.shared.apollo.fetch(query: GetWorkflowListQuery()) { result in
+        notificationMessage = ""
+        Network.shared.apollo.fetch(query: WorkflowListQuery()) { result in
             switch result {
             case .success(let graphQLResult):
                 print("Success! Result: \(graphQLResult)")
@@ -62,15 +57,15 @@ class WorkflowListViewModel: ObservableObject {
     
     func loadMoreWorkflows() {
         // TODO (Section 6 - https://www.apollographql.com/docs/ios/tutorial/tutorial-connect-queries-to-ui#configure-launchlistviewmodel)
-        Network.shared.apollo.fetch(query: GetWorkflowListQuery()) { [weak self] result in
+        Network.shared.apollo.fetch(query: WorkflowListQuery()) { [weak self] result in
             guard let self = self else {
                 return
             }
 
             switch result {
             case .success(let graphQLResult):
-                if let workflowConnection = graphQLResult.data?.  {
-                    self.workflows.append(contentsOf: workflowConnection.workflows.compactMap({ $0 }))
+                if let workflowConnection = graphQLResult.data?.workflows  {
+//                    self.workflows.append(contentsOf: workflowConnection.workflows?)
                 }
 
                 if let errors = graphQLResult.errors {
@@ -80,6 +75,6 @@ class WorkflowListViewModel: ObservableObject {
                 self.appAlert = .errors(errors: [error])
             }
         }
-    }
+   }
     
 }

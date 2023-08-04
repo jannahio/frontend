@@ -16,6 +16,7 @@ public class WorkflowListQuery: GraphQLQuery {
           workflows {
             __typename
             id
+            name
             description
           }
         }
@@ -66,10 +67,12 @@ public class WorkflowListQuery: GraphQLQuery {
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", JannahApi.ID.self),
+          .field("name", String.self),
           .field("description", String.self),
         ] }
 
         public var id: JannahApi.ID { __data["id"] }
+        public var name: String { __data["name"] }
         public var description: String { __data["description"] }
       }
     }

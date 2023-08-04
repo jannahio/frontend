@@ -22,7 +22,8 @@
 		30680EED2A75CF500028A7C3 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30680EEC2A75CF500028A7C3 /* Network.swift */; };
 		30680EEF2A75D09A0028A7C3 /* WorkflowListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30680EEE2A75D0990028A7C3 /* WorkflowListViewModel.swift */; };
 		30680EF12A75D1070028A7C3 /* View+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30680EF02A75D1070028A7C3 /* View+Alert.swift */; };
-		30C184652A79B7E50035F7E1 /* WorkflowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C184642A79B7E50035F7E1 /* WorkflowView.swift */; };
+		30C184652A79B7E50035F7E1 /* WorkflowRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C184642A79B7E50035F7E1 /* WorkflowRow.swift */; };
+		30C1846B2A7C60EF0035F7E1 /* WorkflowListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30C1846A2A7C60EF0035F7E1 /* WorkflowListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +60,8 @@
 		30680EEC2A75CF500028A7C3 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		30680EEE2A75D0990028A7C3 /* WorkflowListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowListViewModel.swift; sourceTree = "<group>"; };
 		30680EF02A75D1070028A7C3 /* View+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Alert.swift"; sourceTree = "<group>"; };
-		30C184642A79B7E50035F7E1 /* WorkflowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowView.swift; sourceTree = "<group>"; };
+		30C184642A79B7E50035F7E1 /* WorkflowRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowRow.swift; sourceTree = "<group>"; };
+		30C1846A2A7C60EF0035F7E1 /* WorkflowListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowListView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		30680EB32A75C2E40028A7C3 /* Jannah */ = {
 			isa = PBXGroup;
 			children = (
+				30C1846A2A7C60EF0035F7E1 /* WorkflowListView.swift */,
 				30680EB42A75C2E40028A7C3 /* JannahApp.swift */,
 				30680EB62A75C2E40028A7C3 /* ContentView.swift */,
 				30680EB82A75C2E50028A7C3 /* Assets.xcassets */,
@@ -124,7 +127,7 @@
 				30680EEC2A75CF500028A7C3 /* Network.swift */,
 				30680EEE2A75D0990028A7C3 /* WorkflowListViewModel.swift */,
 				30680EF02A75D1070028A7C3 /* View+Alert.swift */,
-				30C184642A79B7E50035F7E1 /* WorkflowView.swift */,
+				30C184642A79B7E50035F7E1 /* WorkflowRow.swift */,
 			);
 			path = Jannah;
 			sourceTree = "<group>";
@@ -310,8 +313,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				30680EB72A75C2E40028A7C3 /* ContentView.swift in Sources */,
-				30C184652A79B7E50035F7E1 /* WorkflowView.swift in Sources */,
+				30C184652A79B7E50035F7E1 /* WorkflowRow.swift in Sources */,
 				30680EEF2A75D09A0028A7C3 /* WorkflowListViewModel.swift in Sources */,
+				30C1846B2A7C60EF0035F7E1 /* WorkflowListView.swift in Sources */,
 				30680EB52A75C2E40028A7C3 /* JannahApp.swift in Sources */,
 				30680EED2A75CF500028A7C3 /* Network.swift in Sources */,
 				30680EF12A75D1070028A7C3 /* View+Alert.swift in Sources */,
