@@ -1,0 +1,10 @@
+query StorageList{
+  storages{
+    cursor,
+    hasMore,
+    storages{
+      id,
+      description
+    }
+  }
+}
