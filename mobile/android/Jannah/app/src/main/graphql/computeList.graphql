@@ -1,8 +1,0 @@
-query getComputes
-{
-    allComputes
-    {
-        name,
-        description
-    }
-}
