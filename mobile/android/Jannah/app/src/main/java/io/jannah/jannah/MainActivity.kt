@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package io.jannah.jannah
 
 import android.os.Bundle
@@ -38,6 +40,15 @@ import io.jannah.jannah.ui.theme.JannahTheme
 import io.jannah.jannah.SampleData.SampleData
 import io.jannah.jannah.SampleData.Message
 
+//////////////
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.res.stringResource
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.composable
 
 
 class MainActivity : ComponentActivity() {
@@ -45,9 +56,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JannahTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
-
-                    Conversation(SampleData.conversationSample)
+//                Surface(modifier = Modifier.fillMaxSize()) {
+//
+//                    Conversation(SampleData.conversationSample)
+//                }
+                Scaffold(topBar = { TopAppBar({ Text(stringResource(R.string.app_name)) }) }) { paddingValues ->
+                    Box(Modifier.padding(paddingValues)) {
+                        MainNavHost()
+                    }
                 }
             }
         }
@@ -146,3 +162,24 @@ fun PreviewConversation() {
 }
 
 
+@Composable
+private fun MainNavHost() {
+    val navController = rememberNavController()
+    NavHost(navController, startDestination = NavigationDestinations.FLOW_LIST) {
+        composable(route = NavigationDestinations.FLOW_LIST) {
+            FlowList(
+                onFlowClick = { flowId ->
+                    navController.navigate("${NavigationDestinations.FLOW_DETAILS}/$flowId")
+                }
+            )
+        }
+
+        composable(route = "${NavigationDestinations.FLOW_DETAILS}/{${NavigationArguments.FLOW_ID}}") { navBackStackEntry ->
+            FlowDetails(flowId = navBackStackEntry.arguments!!.getString(NavigationArguments.FLOW_ID)!!)
+        }
+
+        composable(route = NavigationDestinations.LOGIN) {
+            Login()
+        }
+    }
+}

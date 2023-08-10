@@ -1,4 +1,9 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package io.jannah.jannah.SampleData
+
+import androidx.compose.material3.ExperimentalMaterial3Api
+
 /**
  * SampleData for Jetpack Compose Tutorial 
  */
