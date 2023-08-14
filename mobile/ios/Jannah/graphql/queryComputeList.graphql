@@ -1,0 +1,10 @@
+query ComputeList{
+  computes{
+    cursor,
+    hasMore,
+    computes{
+      id,
+      description
+    }
+  }
+}

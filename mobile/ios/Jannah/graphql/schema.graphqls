@@ -1,0 +1,207 @@
+"""
+A directive used by the Apollo iOS client to annotate operations or fragments that should be used exclusively for generating local cache mutations instead of as standard operations.
+"""
+directive @apollo_client_ios_localCacheMutation on QUERY | MUTATION | SUBSCRIPTION | FRAGMENT_DEFINITION
+
+type Query {
+  site: JannahSiteType
+  sites: QuerySites
+  users: QueryUsers
+  boots: QueryBoots
+  networks: QueryNetworks
+  storages: QueryStorages
+  computes: QueryComputes
+  uxs: QueryUXs
+  feedbacks: QueryFeedbacks
+  workflows: QueryWorkflows
+}
+
+type JannahSiteType {
+  id: ID!
+  name: String!
+  description: String!
+  logo: String!
+}
+
+type QuerySites {
+  cursor: Int
+  hasMore: Boolean
+  sites: [JannahSiteType]
+}
+
+type QueryUsers {
+  cursor: Int
+  hasMore: Boolean
+  users: [UserType]
+}
+
+type UserType {
+  id: ID!
+  password: String!
+  lastLogin: DateTime
+
+  """
+  Designates that this user has all permissions without explicitly assigning them.
+  """
+  isSuperuser: Boolean!
+
+  """Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."""
+  username: String!
+  firstName: String!
+  lastName: String!
+  email: String!
+
+  """Designates whether the user can log into this admin site."""
+  isStaff: Boolean!
+
+  """
+  Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+  """
+  isActive: Boolean!
+  dateJoined: DateTime!
+  avatar: String!
+  bio: String
+  location: String
+  website: String
+  joinedDate: Date!
+}
+
+"""
+The `DateTime` scalar type represents a DateTime
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar DateTime
+
+"""
+The `Date` scalar type represents a Date
+value as specified by
+[iso8601](https://en.wikipedia.org/wiki/ISO_8601).
+"""
+scalar Date
+
+type QueryBoots {
+  cursor: Int
+  hasMore: Boolean
+  boots: [BootType]
+}
+
+type BootType {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String!
+}
+
+type QueryNetworks {
+  cursor: Int
+  hasMore: Boolean
+  networks: [NetworkType]
+}
+
+type NetworkType {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String!
+}
+
+type QueryStorages {
+  cursor: Int
+  hasMore: Boolean
+  storages: [StorageType]
+}
+
+type StorageType {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String!
+}
+
+type QueryComputes {
+  cursor: Int
+  hasMore: Boolean
+  computes: [ComputeType]
+}
+
+type ComputeType {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String!
+}
+
+type QueryUXs {
+  cursor: Int
+  hasMore: Boolean
+  uxs: [UXType]
+}
+
+type UXType {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String!
+}
+
+type QueryFeedbacks {
+  cursor: Int
+  hasMore: Boolean
+  feedbacks: [FeedbackType]
+}
+
+type FeedbackType {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String!
+}
+
+type QueryWorkflows {
+  cursor: Int
+  hasMore: Boolean
+  workflows: [WorkflowType]
+}
+
+type WorkflowType {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String!
+}
+
+type Mutation {
+  tokenAuth(username: String!, password: String!): ObtainJSONWebToken
+  verifyToken(token: String): Verify
+  refreshToken(token: String): Refresh
+  createUser(email: String!, password: String!, username: String!): CreateUser
+}
+
+type ObtainJSONWebToken {
+  payload: GenericScalar!
+  refreshExpiresIn: Int!
+  user: UserType
+  token: String!
+}
+
+"""
+The `GenericScalar` scalar type represents a generic
+GraphQL scalar value that could be:
+String, Boolean, Int, Float, List or Object.
+"""
+scalar GenericScalar
+
+type Verify {
+  payload: GenericScalar!
+}
+
+type Refresh {
+  payload: GenericScalar!
+  refreshExpiresIn: Int!
+  token: String!
+}
+
+type CreateUser {
+  user: UserType
+}
