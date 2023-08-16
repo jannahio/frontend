@@ -1,8 +1,15 @@
+/**
+ * The first section in the build configuration applies the Android Gradle plugin
+ * to this build and makes the android block available to specify
+ * Android-specific build options.
+ */
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.apollographql.apollo3").version("3.8.2")
 }
+
 
 android {
     namespace 'io.jannah.jannah'
