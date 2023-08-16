@@ -5,13 +5,15 @@ directive @apollo_client_ios_localCacheMutation on QUERY | MUTATION | SUBSCRIPTI
 
 type Query {
   site: JannahSiteType
-  allUsers: [UserType]
-  allBoots: [BootType]
-  allNetworks: [NetworkType]
-  allStorages: [StorageType]
-  allComputes: [ComputeType]
-  allUxs: [UXType]
-  allFeedbacks: [FeedbackType]
+  sites: QuerySites
+  users: QueryUsers
+  boots: QueryBoots
+  networks: QueryNetworks
+  storages: QueryStorages
+  computes: QueryComputes
+  uxs: QueryUXs
+  feedbacks: QueryFeedbacks
+  workflows: QueryWorkflows
 }
 
 type JannahSiteType {
@@ -19,6 +21,18 @@ type JannahSiteType {
   name: String!
   description: String!
   logo: String!
+}
+
+type QuerySites {
+  cursor: Int
+  hasMore: Boolean
+  sites: [JannahSiteType]
+}
+
+type QueryUsers {
+  cursor: Int
+  hasMore: Boolean
+  users: [UserType]
 }
 
 type UserType {
@@ -66,11 +80,23 @@ value as specified by
 """
 scalar Date
 
+type QueryBoots {
+  cursor: Int
+  hasMore: Boolean
+  boots: [BootType]
+}
+
 type BootType {
   id: ID!
   name: String!
   slug: String!
   description: String!
+}
+
+type QueryNetworks {
+  cursor: Int
+  hasMore: Boolean
+  networks: [NetworkType]
 }
 
 type NetworkType {
@@ -80,11 +106,23 @@ type NetworkType {
   description: String!
 }
 
+type QueryStorages {
+  cursor: Int
+  hasMore: Boolean
+  storages: [StorageType]
+}
+
 type StorageType {
   id: ID!
   name: String!
   slug: String!
   description: String!
+}
+
+type QueryComputes {
+  cursor: Int
+  hasMore: Boolean
+  computes: [ComputeType]
 }
 
 type ComputeType {
@@ -94,6 +132,12 @@ type ComputeType {
   description: String!
 }
 
+type QueryUXs {
+  cursor: Int
+  hasMore: Boolean
+  uxs: [UXType]
+}
+
 type UXType {
   id: ID!
   name: String!
@@ -101,7 +145,26 @@ type UXType {
   description: String!
 }
 
+type QueryFeedbacks {
+  cursor: Int
+  hasMore: Boolean
+  feedbacks: [FeedbackType]
+}
+
 type FeedbackType {
+  id: ID!
+  name: String!
+  slug: String!
+  description: String!
+}
+
+type QueryWorkflows {
+  cursor: Int
+  hasMore: Boolean
+  workflows: [WorkflowType]
+}
+
+type WorkflowType {
   id: ID!
   name: String!
   slug: String!
