@@ -56,10 +56,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JannahTheme {
-//                Surface(modifier = Modifier.fillMaxSize()) {
-//
-//                    Conversation(SampleData.conversationSample)
-//                }
                 Scaffold(topBar = { TopAppBar({ Text(stringResource(R.string.app_name)) }) }) { paddingValues ->
                     Box(Modifier.padding(paddingValues)) {
                         MainNavHost()
