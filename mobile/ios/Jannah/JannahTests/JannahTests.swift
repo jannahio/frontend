@@ -2,10 +2,11 @@
 //  JannahTests.swift
 //  JannahTests
 //
-//  Created by Osman Jalloh on 6/9/23.
+//  Created by Osman Jalloh on 7/29/23.
 //
 
 import XCTest
+@testable import Jannah
 
 final class JannahTests: XCTestCase {
 
@@ -27,7 +28,7 @@ final class JannahTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        measure {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

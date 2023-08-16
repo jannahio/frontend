@@ -1,12 +1,11 @@
 {
-  "schemaNamespace" : "graphql",
+  "schemaNamespace" : "JannahApi",
   "input" : {
     "operationSearchPaths" : [
       "**/*.graphql"
     ],
     "schemaSearchPaths" : [
-      "**/*.graphqls",
-      "**/schema.json"
+      "**/*.graphqls"
     ]
   },
   "output" : {
@@ -15,7 +14,7 @@
       }
     },
     "schemaTypes" : {
-      "path" : "./graphql",
+      "path" : "./JannahApi",
       "moduleType" : {
         "swiftPackageManager" : {
         }

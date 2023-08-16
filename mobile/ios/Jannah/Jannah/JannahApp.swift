@@ -2,7 +2,7 @@
 //  JannahApp.swift
 //  Jannah
 //
-//  Created by Osman Jalloh on 6/9/23.
+//  Created by Osman Jalloh on 7/29/23.
 //
 
 import SwiftUI
@@ -12,6 +12,7 @@ struct JannahApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            WorkflowListView()
         }
     }
 }
