@@ -5,7 +5,7 @@
         <ion-content>
           <ion-list id="inbox-list">
             <ion-list-header>Jannah</ion-list-header>
-            <ion-note>osman@jallohlab.com</ion-note>
+            <ion-note>Osman</ion-note>
 
             <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
               <ion-item @click="selectedIndex = i" router-direction="root" :router-link="p.url" lines="none" :detail="false" class="hydrated" :class="{ selected: selectedIndex === i }">
@@ -100,6 +100,20 @@ const appPages = [
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneOutline,
     name: 'Dashboard',
+  },
+  {
+    title: 'Site',
+    url: '/workflow/Site',
+    iosIcon: paperPlaneOutline,
+    mdIcon: paperPlaneOutline,
+    name: 'Site',
+  },
+  {
+    title: 'User',
+    url: '/workflow/User',
+    iosIcon: paperPlaneOutline,
+    mdIcon: paperPlaneOutline,
+    name: 'User',
   },
   {
     title: 'Boot',

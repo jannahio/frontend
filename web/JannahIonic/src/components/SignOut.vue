@@ -36,9 +36,6 @@ export default {
     {
           async userSignOut() 
           {
-            //this.userStore.removeToken();
-            //this.userStore.removeUser();
-
             const ionicSignOutUserStore = await useIonicUserStore.create();
             console.log("ionicSignOutUserStore", ionicSignOutUserStore);
             await ionicSignOutUserStore.remove('ionicUserToken');

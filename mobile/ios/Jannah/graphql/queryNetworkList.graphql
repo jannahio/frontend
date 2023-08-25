@@ -4,6 +4,7 @@ query NetworkList{
     hasMore,
     networks{
       id,
+      name,
       description
     }
   }

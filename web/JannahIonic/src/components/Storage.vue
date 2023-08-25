@@ -5,21 +5,6 @@ import gql from 'graphql-tag';
 import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
 
-// // HTTP connection to the API
-// const httpLink = createHttpLink({
-//   // You should use an absolute URL here
-//   uri: 'http://localhost:8000/graphql',
-// });
-
-// // Cache implementation
-// const cache = new InMemoryCache();
-
-// // Create the apollo client
-// const storageapolloClient = new ApolloClient({
-//   link: httpLink,
-//   cache,
-// });
-
 export default {
   data() {
       return {
@@ -29,27 +14,29 @@ export default {
   apollo: {
      allStorages: {
         query: gql`
-            query getStorages 
-            {
-              allStorages
-              {
-                name,
-                description
+              query StorageList{
+                storages{
+                  cursor,
+                  hasMore,
+                  storages{
+                    id,
+                    name,
+                    description
+                  }
+                }
               }
-            }
         `,
         data () {
           return {
             // Initialize your apollo data
-            allNetworks: [],
+            allStorages: [],
             loadingStoragesQueriesCount: 0
           }
         },
         update (data) {
           console.log(data)
           // The returned value will update
-          // the vue property 'pingMessage'
-          return data.allStorages
+          return data.storages.storages
         },
         // Optional result hook
         result ({ data, loading, networkStatus }) {
@@ -68,43 +55,12 @@ export default {
         },
       },
     },
-  // setup () 
-  // {
-  //   provideApolloClient(storageapolloClient);
-  //   const { result, loading,  error, onResult , onError } = useQuery
-  //   (
-  //     gql`
-      // query getStorages 
-      // {
-      //   allStorages
-      //   {
-      //     name,
-      //     description
-      //   }
-      // }
-  //   `)
-  //   const allStorages = computed(() => result.value?.allStorages ?? [])
-  //   onResult(queryResult => {
-  //     console.log(queryResult.data)
-  //     console.log(queryResult.loading)
-  // //    console.log(queryResult.networkStatus)
-  //     console.log(queryResult.stale)
-  //   });
-  //   onError(error => {
-  //     logErrorMessages(error)
-  //   })
-  //  return {
-  //   allStorages,
-  //   loading,
-  //   error,
-  //   }
-  // },
 };
 </script>
 
 <template>
   <div class="storage">
-    <h1>This is a Storage page</h1>
+    <h1>This is a Storage index page</h1>
     <div v-if="loadingStoragesQueriesCount">Loading...</div>
     <div v-else-if="error">Error: {{ error.message }}</div>
     <ul v-else-if="allStorages">

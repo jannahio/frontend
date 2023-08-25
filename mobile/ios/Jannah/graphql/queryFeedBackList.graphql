@@ -4,6 +4,7 @@ query FeedbackList{
     hasMore,
     feedbacks{
       id,
+      name,
       description
     }
   }

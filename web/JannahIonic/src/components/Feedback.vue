@@ -5,20 +5,6 @@ import gql from 'graphql-tag';
 import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
 
-// // HTTP connection to the API
-// const httpLink = createHttpLink({
-//   // You should use an absolute URL here
-//   uri: 'http://localhost:8000/graphql',
-// });
-
-// // Cache implementation
-// const cache = new InMemoryCache();
-
-// // Create the apollo client
-// const feedbackapolloClient = new ApolloClient({
-//   link: httpLink,
-//   cache,
-// });
 
 export default {
   data() {
@@ -29,14 +15,17 @@ export default {
   apollo: {
     allFeedbacks: {
         query: gql`
-            query getFeedbacks
-            {
-              allFeedbacks
-              {
-                name,
-                description
-              }
+        query FeedbackList{
+          feedbacks{
+            cursor,
+            hasMore,
+            feedbacks{
+              id,
+              name,
+              description
             }
+          }
+        }
         `,
         data () {
           return {
@@ -49,7 +38,7 @@ export default {
           console.log(data)
           // The returned value will update
           // the vue property 'pingMessage'
-          return data.allFeedbacks
+          return data.feedbacks.feedbacks
         },
         // Optional result hook
         result ({ data, loading, networkStatus }) {
@@ -69,43 +58,13 @@ export default {
         },
       },
     },
-  // setup () 
-  // {
-  //   provideApolloClient(feedbackapolloClient);
-  //   const { result, loading,  error, onResult , onError } = useQuery
-  //   (
-  //     gql`
-      // query getFeedbacks
-      // {
-      //   allFeedbacks
-      //   {
-      //     name,
-      //     description
-      //   }
-      // }
-  //   `)
-  //   const allFeedbacks = computed(() => result.value?.allFeedbacks ?? [])
-  //   onResult(queryResult => {
-  //     console.log(queryResult.data)
-  //     console.log(queryResult.loading)
-  // //    console.log(queryResult.networkStatus)
-  //     console.log(queryResult.stale)
-  //   });
-  //   onError(error => {
-  //     logErrorMessages(error)
-  //   })
-  //  return {
-  //   allFeedbacks,
-  //   loading,
-  //   error,
-  //   }
-  // },
+
 };
 </script>
 
 <template>
   <div class="feedback">
-    <h1>This is a Feedback page</h1>
+    <h1>This is a Feedback index page</h1>
     <div v-if="loadingFeedbackQueriesCount">Loading...</div>
     <div v-else-if="error">Error: {{ error.message }}</div>
     <ul v-else-if="allFeedbacks">

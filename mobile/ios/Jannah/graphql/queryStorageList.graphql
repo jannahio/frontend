@@ -4,6 +4,7 @@ query StorageList{
     hasMore,
     storages{
       id,
+      name,
       description
     }
   }

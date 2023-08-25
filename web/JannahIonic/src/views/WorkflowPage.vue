@@ -30,7 +30,9 @@ import { useUserStore } from "@/stores/user";
 import { useIonicUserStore } from "@/stores/ionic_user";
 import { USER_SIGNIN } from "@/mutations";
 import { ref } from 'vue';
-//import CurrentWorkflow from "../components/CurrentWorkflow.vue";
+
+import Site from "../components/Site.vue";
+import User from "../components/User.vue";
 import SignIn from "../components/SignIn.vue";
 import Register from "../components/Register.vue";
 import Boot from "../components/Boot.vue";
@@ -47,6 +49,8 @@ const route = useRoute();
 const userStore = useUserStore();
 
 const active_workflows = {
+  Site,
+  User,
   SignIn,
   Register,
   Boot,

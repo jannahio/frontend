@@ -27,31 +27,30 @@ export default {
       };
     },
   apollo: {
-      allComputes: {
+      allWorkflows: {
         query: gql`
-            query getComputes
-            {
-              allComputes
-              {
-                name,
-                description
-              }
+            query WorkflowList{
+                workflows{
+                  cursor,
+                  hasMore,
+                  workflows{
+                    id,
+                    name,
+                    description
+                  }
+                }
             }
         `,
         data () {
           return {
             // Initialize your apollo data
-            allComputess: [],
-            loadingComputeQueriesCount: 0
+            allWorkflows: [],
+            loadingWorkflowQueriesCount: 0
           }
         },
         update (data) {
           console.log(data);
-          // The returned value will update
-          // the vue property 'pingMessage'
-          //this.loading = loading;
-          //this.networkStatus = networkStatus;
-          return data.allComputes;
+          return data.workflows.workflows;
         },
         // Optional result hook
         result ({ data, loading, networkStatus }) {
@@ -63,7 +62,7 @@ export default {
           this.error = error;
         },
         // Loading state
-        loadingKey: 'loadingComputeQueriesCount',
+        loadingKey: 'loadingWorkflowQueriesCount',
         // watchLoading will be called whenever the loading state changes
         watchLoading (isLoading, countModifier) {
           // isLoading is a boolean
@@ -71,51 +70,19 @@ export default {
         },
       },
     },
-  // setup () 
-  // {
-  //   provideApolloClient(computeapolloClient);
-  //   const { result, loading,  error, onResult , onError } = useQuery
-  //   (
-  //     gql`
-  //     query getComputes 
-  //     {
-  //       allComputes
-  //       {
-  //         name,
-  //         description
-  //       }
-  //     }
-  //   `)
-  //   const allComputes = computed(() => result.value?.allComputes ?? [])
-  //   onResult(queryResult => {
-  //     console.log(queryResult.data)
-  //     console.log(queryResult.loading)
-  // //    console.log(queryResult.networkStatus)
-  //     console.log(queryResult.stale)
-  //   });
-  //   onError(error => {
-  //     logErrorMessages(error)
-  //   })
-  //  return {
-    // allComputes,
-    // loading,
-    // error,
-  //   }
-  // },
 };
 </script>
 
 <template>
-  <div class="compute">
-    <h1>This is a Compute page</h1>
-    <div v-if="loadingComputeQueriesCount">Loading...</div>
+  <div class="workflow">
+    <h1>This is a Workflow index page</h1>
+    <div v-if="loadingWorkflowQueriesCount">Loading...</div>
     <div v-else-if="error"> {{ error.message }}</div>
-    <ul v-else-if="allComputes">
-      <li v-for="compute of allComputes" :key="compute.name">
-        {{ compute.name }} - {{ compute.description }}
+    <ul v-else-if="allWorkflows">
+      <li v-for="workflow of allWorkflows" :key="workflow.name">
+        {{ workflow.name }} - {{ workflow.description }}
       </li>
     </ul>
-
   </div>
 </template>
 

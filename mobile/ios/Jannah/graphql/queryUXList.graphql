@@ -4,6 +4,7 @@ query UXList{
     hasMore,
     uxs{
       id,
+      name,
       description
     }
   }

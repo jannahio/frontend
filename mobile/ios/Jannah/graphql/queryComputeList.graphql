@@ -4,6 +4,7 @@ query ComputeList{
     hasMore,
     computes{
       id,
+      name,
       description
     }
   }

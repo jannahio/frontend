@@ -5,21 +5,6 @@ import gql from 'graphql-tag';
 import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
 
-// // HTTP connection to the API
-// const httpLink = createHttpLink({
-//   // You should use an absolute URL here
-//   uri: 'http://localhost:8000/graphql',
-// });
-
-// // Cache implementation
-// const cache = new InMemoryCache();
-
-// // Create the apollo client
-// const computeapolloClient = new ApolloClient({
-//   link: httpLink,
-//   cache,
-// });
-
 export default {
    data() {
       return {
@@ -29,19 +14,23 @@ export default {
    apollo: {
       allComputes: {
         query: gql`
-            query getComputes 
-            {
-              allComputes
-              {
-                name,
-                description
-              }
-            }
+                query getComputes
+                    {
+                      computes{
+                          cursor,
+                          hasMore,
+                          computes{
+                            id,
+                            name,
+                            description
+                          }
+                        }
+                    }
         `,
         data () {
           return {
             // Initialize your apollo data
-            allComputess: [],
+            allComputes: [],
             loadingComputeQueriesCount: 0
           }
         },
@@ -49,7 +38,7 @@ export default {
           console.log(data)
           // The returned value will update
           // the vue property 'pingMessage'
-          return data.allComputes
+          return data.computes.computes
         },
         // Optional result hook
         result ({ data, loading, networkStatus }) {
@@ -68,43 +57,13 @@ export default {
         },
       },
     },
-  // setup () 
-  // {
-  //   provideApolloClient(computeapolloClient);
-  //   const { result, loading,  error, onResult , onError } = useQuery
-  //   (
-    //   gql`
-    //   query getComputes 
-    //   {
-    //     allComputes
-    //     {
-    //       name,
-    //       description
-    //     }
-    //   }
-    // `)
-  //   const allComputes = computed(() => result.value?.allComputes ?? [])
-  //   onResult(queryResult => {
-  //     console.log(queryResult.data)
-  //     console.log(queryResult.loading)
-  // //    console.log(queryResult.networkStatus)
-  //     console.log(queryResult.stale)
-  //   });
-  //   onError(error => {
-  //     logErrorMessages(error)
-  //   })
-  //  return {
-  //   allComputes,
-  //   loading,
-  //   error,
-  //   }
-  // },
+
 };
 </script>
 
 <template>
   <div class="compute">
-    <h1>This is a Compute page</h1>
+    <h1>This is a Compute index page</h1>
     <div v-if="loadingComputeQueriesCount">Loading...</div>
     <div v-else-if="error">Error: {{ error.message }}</div>
     <ul v-else-if="allComputes">

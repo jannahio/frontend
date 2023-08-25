@@ -4,6 +4,7 @@ query SiteList {
     hasMore,
     sites{
       id,
+      name,
       description
     }
   }

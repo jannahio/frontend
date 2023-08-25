@@ -5,26 +5,25 @@ import gql from 'graphql-tag';
 import { provideApolloClient, DefaultApolloClient } from '@vue/apollo-composable';
 import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client/core';
 
-
 export default {
   // https://apollo.vuejs.org/api/smart-query.html#options
   // Apollo-specific options
     apollo: {
       // Advanced query with parameters
       // The 'variables' method is watched by vue
-      allBoots: {
+      allSites: {
         query: gql`
-              query BootList{
-                boots{
+            query SiteList {
+                sites{
                   cursor,
                   hasMore,
-                  boots{
+                  sites{
                     id,
                     name,
                     description
                   }
                 }
-              }
+            }
         `,
         // Reactive parameters
         // variables () {
@@ -51,7 +50,7 @@ export default {
           console.log(data)
           // The returned value will update
           // the vue property 'pingMessage'
-          return data.boots.boots
+          return data.sites.sites
         },
         // Optional result hook
         result ({ data, loading, networkStatus }) {
@@ -65,7 +64,7 @@ export default {
         // loadingKey is the name of the data property
         // that will be incremented when the query is loading
         // and decremented when it no longer is.
-        loadingKey: 'loadingBootQueriesCount',
+        loadingKey: 'loadingSiteQueriesCount',
         // watchLoading will be called whenever the loading state changes
         watchLoading (isLoading, countModifier) {
           // isLoading is a boolean
@@ -78,12 +77,12 @@ export default {
 
 <template>
   <div class="boot">
-    <h1>This is a Boot index page</h1>
+    <h1>This is a Site index page</h1>
     <div v-if="loading">Loading...</div>
     <div v-else-if="error">Error: {{ error.message }}</div>
-    <ul v-else-if="allBoots">
-      <li v-for="boot of allBoots" :key="boot.name">
-        {{ boot.name }} - {{ boot.description }}
+    <ul v-else-if="allSites">
+      <li v-for="site of allSites" :key="site.name">
+        {{ site.name }} - {{ site.description }}
       </li>
     </ul>
   </div>
