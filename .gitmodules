@@ -1,0 +1,6 @@
+[submodule "mobile/android/mobile/android/apollographql/apollo-kotlin-tutorial"]
+	path = mobile/android/mobile/android/apollographql/apollo-kotlin-tutorial
+	url = https://github.com/apollographql/apollo-kotlin-tutorial
+[submodule "mobile/android/apollographql/apollo-kotlin-tutorial"]
+	path = mobile/android/apollographql/apollo-kotlin-tutorial
+	url = https://github.com/apollographql/apollo-kotlin-tutorial
