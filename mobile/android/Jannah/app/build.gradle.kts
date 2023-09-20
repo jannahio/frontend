@@ -31,11 +31,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -68,10 +68,10 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.5.1")
 
 
-    implementation("androidx.navigation:navigation-compose:2.5.3")
-    implementation("androidx.security:security-crypto:1.1.0-alpha05")
-    implementation("io.coil-kt:coil-compose:2.2.2")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2022.10.00"))
+    implementation("androidx.navigation:navigation-compose:2.7.2")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation("io.coil-kt:coil-compose:2.4.0")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.09.00"))
     implementation("com.apollographql.apollo3:apollo-runtime:4.0.0-alpha.3")
 }
 
