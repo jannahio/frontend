@@ -1,0 +1,10 @@
+query FeedbackList{
+    feedbacks{
+        cursor,
+        hasMore,
+        feedbacks{
+            id,
+            description
+        }
+    }
+}
