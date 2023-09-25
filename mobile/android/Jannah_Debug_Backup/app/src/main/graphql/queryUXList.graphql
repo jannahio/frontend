@@ -1,0 +1,11 @@
+query UXList{
+    uxs{
+        cursor,
+        hasMore,
+        uxs{
+            id,
+            description
+        }
+    }
+}
+
