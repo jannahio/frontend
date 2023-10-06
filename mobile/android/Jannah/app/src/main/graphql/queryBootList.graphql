@@ -1,0 +1,10 @@
+query BootList{
+    boots{
+        cursor,
+        hasMore,
+        boots{
+            id,
+            description
+        }
+    }
+}

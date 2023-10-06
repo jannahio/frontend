@@ -1,0 +1,11 @@
+query SiteList {
+    sites{
+        cursor,
+        hasMore,
+        sites{
+            id,
+            name,
+            description
+        }
+    }
+}

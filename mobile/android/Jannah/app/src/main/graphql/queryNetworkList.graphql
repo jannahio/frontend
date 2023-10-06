@@ -1,0 +1,12 @@
+query NetworkList{
+    networks{
+        cursor,
+        hasMore,
+        networks{
+            id,
+            name,
+            description
+        }
+    }
+}
+

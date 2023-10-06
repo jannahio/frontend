@@ -27,7 +27,7 @@ fun FlowDetails(flowId: String) {
         modifier = Modifier.padding(16.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            // Mission patch
+            // Flow patch
             Image(
                 modifier = Modifier.size(160.dp, 160.dp),
                 painter = painterResource(R.drawable.ic_launcher_background),
@@ -96,6 +96,6 @@ private fun SmallLoading() {
 
 @Preview(showBackground = true)
 @Composable
-private fun LaunchDetailsPreview() {
-    LaunchDetails(launchId = "42")
+private fun FlowDetailsPreview() {
+    FlowDetails(flowId = "1")
 }
