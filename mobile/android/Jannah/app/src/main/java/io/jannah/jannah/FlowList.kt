@@ -11,18 +11,24 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-
+import android.util.Log
 @Composable
 fun FlowList(onFlowClick: (flowId: String) -> Unit) {
-    LazyColumn {
-        items(5) {
-            FlowItem(flowId = it.toString(), onClick = onFlowClick)
-        }
+    LaunchedEffect(Unit) {
+        Log.d("FlowList", "pre WorkflowListQuery")
+        val response = apolloClient.query(WorkflowListQuery()).execute()
+        Log.d("FlowList", "Success ${response.data}")
     }
+//    LazyColumn {
+//        items(5) {
+//            FlowItem(flowId = it.toString(), onClick = onFlowClick)
+//        }
+//    }
 }
 
 

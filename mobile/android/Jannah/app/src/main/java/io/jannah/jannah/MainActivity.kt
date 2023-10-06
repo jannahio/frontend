@@ -26,11 +26,11 @@ import androidx.navigation.compose.rememberNavController
 
 import io.jannah.jannah.ui.theme.JannahTheme
 
-//
-//import androidx.compose.runtime.getValue
-//import androidx.compose.runtime.mutableStateOf
-//import androidx.compose.runtime.remember
-//import androidx.compose.runtime.setValue
+
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
 
 class MainActivity : ComponentActivity() {
@@ -60,27 +60,27 @@ class MainActivity : ComponentActivity() {
 }
 
 
-//@Composable
-//private fun MainNavHost() {
-//    val navController = rememberNavController()
-//    NavHost(navController, startDestination = NavigationDestinations.LAUNCH_LIST) {
-//        composable(route = NavigationDestinations.LAUNCH_LIST) {
-//            LaunchList(
-//                onLaunchClick = { launchId ->
-//                    navController.navigate("${NavigationDestinations.LAUNCH_DETAILS}/$launchId")
-//                }
-//            )
-//        }
-//
-//        composable(route = "${NavigationDestinations.LAUNCH_DETAILS}/{${NavigationArguments.LAUNCH_ID}}") { navBackStackEntry ->
-//            LaunchDetails(launchId = navBackStackEntry.arguments!!.getString(NavigationArguments.LAUNCH_ID)!!)
-//        }
-//
-//        composable(route = NavigationDestinations.LOGIN) {
-//            Login()
-//        }
-//    }
-//}
+@Composable
+private fun MainNavHost() {
+    val navController = rememberNavController()
+    NavHost(navController, startDestination = NavigationDestinations.LAUNCH_LIST) {
+        composable(route = NavigationDestinations.LAUNCH_LIST) {
+            LaunchList(
+                onLaunchClick = { launchId ->
+                    navController.navigate("${NavigationDestinations.LAUNCH_DETAILS}/$launchId")
+                }
+            )
+        }
+
+        composable(route = "${NavigationDestinations.LAUNCH_DETAILS}/{${NavigationArguments.LAUNCH_ID}}") { navBackStackEntry ->
+            LaunchDetails(launchId = navBackStackEntry.arguments!!.getString(NavigationArguments.LAUNCH_ID)!!)
+        }
+
+        composable(route = NavigationDestinations.LOGIN) {
+            Login()
+        }
+    }
+}
 
 // Implementation baseed on inspiration from
 // https://developer.android.com/guide/navigation/use-graph/navigate
