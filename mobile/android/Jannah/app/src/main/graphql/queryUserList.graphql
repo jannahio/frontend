@@ -1,0 +1,22 @@
+query UserList{
+    users{
+        cursor,
+        hasMore,
+        users{
+            id,
+            lastLogin,
+            isSuperuser,
+            username,
+            firstName,
+            lastName,
+            email,
+            isActive,
+            dateJoined,
+            avatar,
+            bio,
+            location,
+            website,
+            joinedDate
+        }
+    }
+}
