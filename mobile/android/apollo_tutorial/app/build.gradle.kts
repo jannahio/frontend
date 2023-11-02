@@ -1,7 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("com.apollographql.apollo3") version "4.0.0-alpha.3"
+//    id("com.apollographql.apollo3") version "4.0.0-alpha.3"
 }
 
 android {
@@ -75,8 +75,8 @@ dependencies {
     implementation("com.apollographql.apollo3:apollo-runtime:4.0.0-alpha.3")
 }
 
-apollo {
-    service("service") {
-        packageName.set("com.example.rocketreserver")
-    }
-}
+//apollo {
+//    service("service") {
+//        packageName.set("com.example.rocketreserver")
+//    }
+//}
