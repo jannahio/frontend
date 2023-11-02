@@ -65,7 +65,7 @@ class WorkflowListViewModel: ObservableObject {
             switch result {
             case .success(let graphQLResult):
                 if let workflowConnection = graphQLResult.data?.workflows  {
-//                    self.workflows.append(contentsOf: workflowConnection.workflows?)
+                    self.workflows.append(contentsOf: (workflowConnection.workflows?.compactMap({ $0 }))!)
                 }
 
                 if let errors = graphQLResult.errors {
