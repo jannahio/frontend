@@ -91,7 +91,7 @@ private fun FlowNavHost() {
     NavHost(navController, startDestination = NavigationDestinations.FLOW_LIST) {
         composable(route = NavigationDestinations.FLOW_LIST) {
             FlowList(
-                onFlowClick = { flowId ->
+                onWorkflowClick = { flowId ->
                     navController.navigate("${NavigationDestinations.FLOW_DETAILS}/$flowId")
                 }
             )
