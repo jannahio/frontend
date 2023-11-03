@@ -52,11 +52,10 @@ class WorkflowListViewModel: ObservableObject {
     }
     
     func loadMoreWorkflowsIfTheyExist() {
-        // TODO (Section 8 - https://www.apollographql.com/docs/ios/tutorial/tutorial-paginate-results#update-launchlistviewmodel-to-use-cursor)
+        
     }
     
     func loadMoreWorkflows() {
-        // TODO (Section 6 - https://www.apollographql.com/docs/ios/tutorial/tutorial-connect-queries-to-ui#configure-launchlistviewmodel)
         Network.shared.apollo.fetch(query: WorkflowListQuery()) { [weak self] result in
             guard let self = self else {
                 return
@@ -65,7 +64,7 @@ class WorkflowListViewModel: ObservableObject {
             switch result {
             case .success(let graphQLResult):
                 if let workflowConnection = graphQLResult.data?.workflows  {
-//                    self.workflows.append(contentsOf: workflowConnection.workflows?)
+                    self.workflows.append(contentsOf: (workflowConnection.workflows?.compactMap({ $0 }))!)
                 }
 
                 if let errors = graphQLResult.errors {

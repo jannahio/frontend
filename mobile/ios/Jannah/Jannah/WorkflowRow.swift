@@ -21,8 +21,8 @@ struct WorkflowRow: View {
                 .frame(width: 50, height: 50)
             
             VStack(alignment: .leading) {
-                Text("Workflow Name")
                 Text(workflow.name)
+                Text(workflow.description)
                     .font(.system(size: 14))
             }
             Spacer()
