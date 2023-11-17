@@ -59,29 +59,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
-@Composable
-private fun MainNavHost() {
-    val navController = rememberNavController()
-    NavHost(navController, startDestination = NavigationDestinations.LAUNCH_LIST) {
-        composable(route = NavigationDestinations.LAUNCH_LIST) {
-            LaunchList(
-                onLaunchClick = { launchId ->
-                    navController.navigate("${NavigationDestinations.LAUNCH_DETAILS}/$launchId")
-                }
-            )
-        }
-
-        composable(route = "${NavigationDestinations.LAUNCH_DETAILS}/{${NavigationArguments.LAUNCH_ID}}") { navBackStackEntry ->
-            LaunchDetails(launchId = navBackStackEntry.arguments!!.getString(NavigationArguments.LAUNCH_ID)!!)
-        }
-
-        composable(route = NavigationDestinations.LOGIN) {
-            Login()
-        }
-    }
-}
-
 // Implementation baseed on inspiration from
 // https://developer.android.com/guide/navigation/use-graph/navigate
 // Top most navigation for the various Flows within Jannah
