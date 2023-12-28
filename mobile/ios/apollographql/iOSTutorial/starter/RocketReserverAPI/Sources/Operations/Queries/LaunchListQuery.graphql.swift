@@ -8,8 +8,8 @@ public class LaunchListQuery: GraphQLQuery {
   public static let document: ApolloAPI.DocumentType = .notPersisted(
     definition: .init(
       #"""
-      query LaunchList {
-        launches {
+      query LaunchList($cursor: String) {
+        launches(after: $cursor) {
           __typename
           hasMore
           cursor
@@ -28,7 +28,13 @@ public class LaunchListQuery: GraphQLQuery {
       """#
     ))
 
-  public init() {}
+  public var cursor: GraphQLNullable<String>
+
+  public init(cursor: GraphQLNullable<String>) {
+    self.cursor = cursor
+  }
+
+  public var __variables: Variables? { ["cursor": cursor] }
 
   public struct Data: RocketReserverAPI.SelectionSet {
     public let __data: DataDict
@@ -36,7 +42,7 @@ public class LaunchListQuery: GraphQLQuery {
 
     public static var __parentType: ApolloAPI.ParentType { RocketReserverAPI.Objects.Query }
     public static var __selections: [ApolloAPI.Selection] { [
-      .field("launches", Launches.self),
+      .field("launches", Launches.self, arguments: ["after": .variable("cursor")]),
     ] }
 
     public var launches: Launches { __data["launches"] }
