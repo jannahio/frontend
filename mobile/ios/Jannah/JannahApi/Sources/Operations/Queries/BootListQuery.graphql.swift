@@ -38,20 +38,20 @@ public class BootListQuery: GraphQLQuery {
 
     /// Boots
     ///
-    /// Parent Type: `QueryBoots`
+    /// Parent Type: `JannahBoots`
     public struct Boots: JannahApi.SelectionSet {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.QueryBoots }
+      public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.JannahBoots }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
-        .field("cursor", Int?.self),
+        .field("cursor", String?.self),
         .field("hasMore", Bool?.self),
         .field("boots", [Boot?]?.self),
       ] }
 
-      public var cursor: Int? { __data["cursor"] }
+      public var cursor: String? { __data["cursor"] }
       public var hasMore: Bool? { __data["hasMore"] }
       public var boots: [Boot?]? { __data["boots"] }
 

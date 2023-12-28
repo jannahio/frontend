@@ -20,10 +20,19 @@ struct WorkflowListView: View {
                 ForEach(0..<viewModel.workflows.count, id: \.self) { index in
                     WorkflowRow(workflow: viewModel.workflows[index])
                 }
+                if viewModel.lastConnection?.hasMore != false {
+                    if viewModel.activeRequest == nil {
+                            Button(action: viewModel.loadMoreLaunchesIfTheyExist) {
+                                Text("Tap to load more")
+                            }
+                        } else {
+                            Text("Loading...")
+                        }
+                    }
             }
             .task {
                 // TODO (Section 6 - https://www.apollographql.com/docs/ios/tutorial/tutorial-connect-queries-to-ui#use-launches-in-the-ui)
-                viewModel.loadMoreWorkflows()
+                viewModel.loadMoreLaunchesIfTheyExist()
             }
             .navigationTitle("Workflows Starts")
             .appAlert($viewModel.appAlert)

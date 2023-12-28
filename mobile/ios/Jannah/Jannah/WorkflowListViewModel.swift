@@ -13,22 +13,25 @@ import JannahApi
 
 class WorkflowListViewModel: ObservableObject {
     
+    @Published var workflows = [WorkflowListQuery.Data.Workflows.Workflow]()
+    @Published var lastConnection: WorkflowListQuery.Data.Workflows?
+    @Published var activeRequest: Cancellable?
     @Published var appAlert: AppAlert?
     @Published var notificationMessage: String?
-    @Published var workflows = [WorkflowListQuery.Data.Workflows.Workflow]()
+    
 
     
     init() {
         // TODO (Section 13 - https://www.apollographql.com/docs/ios/tutorial/tutorial-subscriptions#use-your-subscription)
-        notificationMessage = ""
-        Network.shared.apollo.fetch(query: WorkflowListQuery()) { result in
-            switch result {
-            case .success(let graphQLResult):
-                print("Success! Result: \(graphQLResult)")
-            case .failure(let error):
-                print("Failure! Error: \(error)")
-            }
-        }
+//        notificationMessage = ""
+//        Network.shared.apollo.fetch(query: WorkflowListQuery()) { result in
+//            switch result {
+//            case .success(let graphQLResult):
+//                print("Success! Result: \(graphQLResult)")
+//            case .failure(let error):
+//                print("Failure! Error: \(error)")
+//            }
+//        }
     }
 
     func startSubscription() {
@@ -51,19 +54,31 @@ class WorkflowListViewModel: ObservableObject {
         notificationMessage = message
     }
     
-    func loadMoreWorkflowsIfTheyExist() {
-        
+    func loadMoreLaunchesIfTheyExist() {
+        guard let connection = self.lastConnection else {
+            self.loadMoreWorkflows(from: nil)
+            return
+        }
+
+        guard connection.hasMore == true else {
+            return
+        }
+
+        self.loadMoreWorkflows(from: connection.cursor)
     }
     
-    func loadMoreWorkflows() {
-        Network.shared.apollo.fetch(query: WorkflowListQuery()) { [weak self] result in
+    func loadMoreWorkflows(from cursor: String?) {
+        Network.shared.apollo.fetch(query: WorkflowListQuery(cursor: cursor ?? .null)) { [weak self] result in
             guard let self = self else {
                 return
             }
-
+            
+            self.activeRequest = nil
+            
             switch result {
             case .success(let graphQLResult):
                 if let workflowConnection = graphQLResult.data?.workflows  {
+                    self.lastConnection = workflowConnection
                     self.workflows.append(contentsOf: (workflowConnection.workflows?.compactMap({ $0 }))!)
                 }
 

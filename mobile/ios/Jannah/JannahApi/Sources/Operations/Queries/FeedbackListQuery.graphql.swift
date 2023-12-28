@@ -16,6 +16,7 @@ public class FeedbackListQuery: GraphQLQuery {
           feedbacks {
             __typename
             id
+            name
             description
           }
         }
@@ -38,20 +39,20 @@ public class FeedbackListQuery: GraphQLQuery {
 
     /// Feedbacks
     ///
-    /// Parent Type: `QueryFeedbacks`
+    /// Parent Type: `JannahFeedbacks`
     public struct Feedbacks: JannahApi.SelectionSet {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.QueryFeedbacks }
+      public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.JannahFeedbacks }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
-        .field("cursor", Int?.self),
+        .field("cursor", String?.self),
         .field("hasMore", Bool?.self),
         .field("feedbacks", [Feedback?]?.self),
       ] }
 
-      public var cursor: Int? { __data["cursor"] }
+      public var cursor: String? { __data["cursor"] }
       public var hasMore: Bool? { __data["hasMore"] }
       public var feedbacks: [Feedback?]? { __data["feedbacks"] }
 
@@ -66,10 +67,12 @@ public class FeedbackListQuery: GraphQLQuery {
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", JannahApi.ID.self),
+          .field("name", String.self),
           .field("description", String.self),
         ] }
 
         public var id: JannahApi.ID { __data["id"] }
+        public var name: String { __data["name"] }
         public var description: String { __data["description"] }
       }
     }

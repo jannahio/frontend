@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension Objects {
-  static let QueryUsers = Object(
-    typename: "QueryUsers",
+  static let SiteType = Object(
+    typename: "SiteType",
     implementedInterfaces: []
   )
 }
