@@ -10,10 +10,18 @@ struct LaunchListView: View {
                 ForEach(0..<viewModel.launches.count, id: \.self) { index in
                     LaunchRow(launch: viewModel.launches[index])
                 }
+                if viewModel.lastConnection?.hasMore != false {
+                    if viewModel.activeRequest == nil {
+                        Button(action: viewModel.loadMoreLaunchesIfTheyExist) {
+                            Text("Tap to load more")
+                        }
+                    } else {
+                        Text("Loading...")
+                    }
+                }
             }
             .task {
-                // TODO (Section 6 - https://www.apollographql.com/docs/ios/tutorial/tutorial-connect-queries-to-ui#use-launches-in-the-ui)
-                viewModel.loadMoreLaunches() 
+                viewModel.loadMoreLaunchesIfTheyExist()
             }
             .navigationTitle("Rocket Launches")
             .appAlert($viewModel.appAlert)
