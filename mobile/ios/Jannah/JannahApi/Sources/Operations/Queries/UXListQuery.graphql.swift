@@ -16,6 +16,7 @@ public class UXListQuery: GraphQLQuery {
           uxs {
             __typename
             id
+            name
             description
           }
         }
@@ -38,20 +39,20 @@ public class UXListQuery: GraphQLQuery {
 
     /// Uxs
     ///
-    /// Parent Type: `QueryUXs`
+    /// Parent Type: `JannahUXs`
     public struct Uxs: JannahApi.SelectionSet {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.QueryUXs }
+      public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.JannahUXs }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
-        .field("cursor", Int?.self),
+        .field("cursor", String?.self),
         .field("hasMore", Bool?.self),
         .field("uxs", [Ux?]?.self),
       ] }
 
-      public var cursor: Int? { __data["cursor"] }
+      public var cursor: String? { __data["cursor"] }
       public var hasMore: Bool? { __data["hasMore"] }
       public var uxs: [Ux?]? { __data["uxs"] }
 
@@ -66,10 +67,12 @@ public class UXListQuery: GraphQLQuery {
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", JannahApi.ID.self),
+          .field("name", String.self),
           .field("description", String.self),
         ] }
 
         public var id: JannahApi.ID { __data["id"] }
+        public var name: String { __data["name"] }
         public var description: String { __data["description"] }
       }
     }

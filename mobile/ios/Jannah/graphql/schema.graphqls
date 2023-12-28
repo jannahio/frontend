@@ -1,36 +1,33 @@
-"""
-A directive used by the Apollo iOS client to annotate operations or fragments that should be used exclusively for generating local cache mutations instead of as standard operations.
-"""
-directive @apollo_client_ios_localCacheMutation on QUERY | MUTATION | SUBSCRIPTION | FRAGMENT_DEFINITION
-
 type Query {
-  site: JannahSiteType
-  sites: QuerySites
-  users: QueryUsers
-  boots: QueryBoots
-  networks: QueryNetworks
-  storages: QueryStorages
-  computes: QueryComputes
-  uxs: QueryUXs
-  feedbacks: QueryFeedbacks
-  workflows: QueryWorkflows
+  sites(cursor: String, count: Int): JannahSites
+  users(cursor: String, count: Int): JannahUsers
+  boots(cursor: String, count: Int): JannahBoots
+  networks(cursor: String, count: Int): JannahNetworks
+  storages(cursor: String, count: Int): JannahStorages
+  computes(cursor: String, count: Int): JannahComputes
+  uxs(cursor: String, count: Int): JannahUXs
+  feedbacks(cursor: String, count: Int): JannahFeedbacks
+  workflows(cursor: String, count: Int): JannahWorkflows
+  workflow(id: String!): WorkflowType
 }
 
-type JannahSiteType {
+type JannahSites {
+  cursor: String
+  count: Int
+  hasMore: Boolean
+  sites: [SiteType]
+}
+
+type SiteType {
   id: ID!
   name: String!
   description: String!
   logo: String!
 }
 
-type QuerySites {
-  cursor: Int
-  hasMore: Boolean
-  sites: [JannahSiteType]
-}
-
-type QueryUsers {
-  cursor: Int
+type JannahUsers {
+  cursor: String
+  count: Int
   hasMore: Boolean
   users: [UserType]
 }
@@ -80,8 +77,9 @@ value as specified by
 """
 scalar Date
 
-type QueryBoots {
-  cursor: Int
+type JannahBoots {
+  cursor: String
+  count: Int
   hasMore: Boolean
   boots: [BootType]
 }
@@ -93,8 +91,9 @@ type BootType {
   description: String!
 }
 
-type QueryNetworks {
-  cursor: Int
+type JannahNetworks {
+  cursor: String
+  count: Int
   hasMore: Boolean
   networks: [NetworkType]
 }
@@ -106,8 +105,9 @@ type NetworkType {
   description: String!
 }
 
-type QueryStorages {
-  cursor: Int
+type JannahStorages {
+  cursor: String
+  count: Int
   hasMore: Boolean
   storages: [StorageType]
 }
@@ -119,8 +119,9 @@ type StorageType {
   description: String!
 }
 
-type QueryComputes {
-  cursor: Int
+type JannahComputes {
+  cursor: String
+  count: Int
   hasMore: Boolean
   computes: [ComputeType]
 }
@@ -132,8 +133,9 @@ type ComputeType {
   description: String!
 }
 
-type QueryUXs {
-  cursor: Int
+type JannahUXs {
+  cursor: String
+  count: Int
   hasMore: Boolean
   uxs: [UXType]
 }
@@ -145,8 +147,9 @@ type UXType {
   description: String!
 }
 
-type QueryFeedbacks {
-  cursor: Int
+type JannahFeedbacks {
+  cursor: String
+  count: Int
   hasMore: Boolean
   feedbacks: [FeedbackType]
 }
@@ -158,8 +161,9 @@ type FeedbackType {
   description: String!
 }
 
-type QueryWorkflows {
-  cursor: Int
+type JannahWorkflows {
+  cursor: String
+  count: Int
   hasMore: Boolean
   workflows: [WorkflowType]
 }
@@ -169,6 +173,7 @@ type WorkflowType {
   name: String!
   slug: String!
   description: String!
+  isStarted: Boolean!
 }
 
 type Mutation {

@@ -16,6 +16,7 @@ public class SiteListQuery: GraphQLQuery {
           sites {
             __typename
             id
+            name
             description
           }
         }
@@ -38,38 +39,40 @@ public class SiteListQuery: GraphQLQuery {
 
     /// Sites
     ///
-    /// Parent Type: `QuerySites`
+    /// Parent Type: `JannahSites`
     public struct Sites: JannahApi.SelectionSet {
       public let __data: DataDict
       public init(_dataDict: DataDict) { __data = _dataDict }
 
-      public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.QuerySites }
+      public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.JannahSites }
       public static var __selections: [ApolloAPI.Selection] { [
         .field("__typename", String.self),
-        .field("cursor", Int?.self),
+        .field("cursor", String?.self),
         .field("hasMore", Bool?.self),
         .field("sites", [Site?]?.self),
       ] }
 
-      public var cursor: Int? { __data["cursor"] }
+      public var cursor: String? { __data["cursor"] }
       public var hasMore: Bool? { __data["hasMore"] }
       public var sites: [Site?]? { __data["sites"] }
 
       /// Sites.Site
       ///
-      /// Parent Type: `JannahSiteType`
+      /// Parent Type: `SiteType`
       public struct Site: JannahApi.SelectionSet {
         public let __data: DataDict
         public init(_dataDict: DataDict) { __data = _dataDict }
 
-        public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.JannahSiteType }
+        public static var __parentType: ApolloAPI.ParentType { JannahApi.Objects.SiteType }
         public static var __selections: [ApolloAPI.Selection] { [
           .field("__typename", String.self),
           .field("id", JannahApi.ID.self),
+          .field("name", String.self),
           .field("description", String.self),
         ] }
 
         public var id: JannahApi.ID { __data["id"] }
+        public var name: String { __data["name"] }
         public var description: String { __data["description"] }
       }
     }

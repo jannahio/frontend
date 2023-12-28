@@ -4,8 +4,8 @@
 import ApolloAPI
 
 public extension Objects {
-  static let QueryComputes = Object(
-    typename: "QueryComputes",
+  static let JannahBoots = Object(
+    typename: "JannahBoots",
     implementedInterfaces: []
   )
 }

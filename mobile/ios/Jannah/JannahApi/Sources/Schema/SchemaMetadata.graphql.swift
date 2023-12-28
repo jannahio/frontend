@@ -23,23 +23,23 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
   public static func objectType(forTypename typename: String) -> Object? {
     switch typename {
     case "Query": return JannahApi.Objects.Query
-    case "QueryNetworks": return JannahApi.Objects.QueryNetworks
+    case "JannahNetworks": return JannahApi.Objects.JannahNetworks
     case "NetworkType": return JannahApi.Objects.NetworkType
-    case "QuerySites": return JannahApi.Objects.QuerySites
-    case "JannahSiteType": return JannahApi.Objects.JannahSiteType
-    case "QueryBoots": return JannahApi.Objects.QueryBoots
+    case "JannahSites": return JannahApi.Objects.JannahSites
+    case "SiteType": return JannahApi.Objects.SiteType
+    case "JannahBoots": return JannahApi.Objects.JannahBoots
     case "BootType": return JannahApi.Objects.BootType
-    case "QueryComputes": return JannahApi.Objects.QueryComputes
+    case "JannahComputes": return JannahApi.Objects.JannahComputes
     case "ComputeType": return JannahApi.Objects.ComputeType
-    case "QueryUXs": return JannahApi.Objects.QueryUXs
+    case "JannahUXs": return JannahApi.Objects.JannahUXs
     case "UXType": return JannahApi.Objects.UXType
-    case "QueryUsers": return JannahApi.Objects.QueryUsers
+    case "JannahUsers": return JannahApi.Objects.JannahUsers
     case "UserType": return JannahApi.Objects.UserType
-    case "QueryWorkflows": return JannahApi.Objects.QueryWorkflows
+    case "JannahWorkflows": return JannahApi.Objects.JannahWorkflows
     case "WorkflowType": return JannahApi.Objects.WorkflowType
-    case "QueryFeedbacks": return JannahApi.Objects.QueryFeedbacks
+    case "JannahFeedbacks": return JannahApi.Objects.JannahFeedbacks
     case "FeedbackType": return JannahApi.Objects.FeedbackType
-    case "QueryStorages": return JannahApi.Objects.QueryStorages
+    case "JannahStorages": return JannahApi.Objects.JannahStorages
     case "StorageType": return JannahApi.Objects.StorageType
     default: return nil
     }
