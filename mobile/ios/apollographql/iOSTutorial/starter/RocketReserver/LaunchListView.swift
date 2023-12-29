@@ -8,7 +8,9 @@ struct LaunchListView: View {
         NavigationView {
             List {
                 ForEach(0..<viewModel.launches.count, id: \.self) { index in
-                    LaunchRow(launch: viewModel.launches[index])
+                    NavigationLink(destination: DetailView(launchID: viewModel.launches[index].id)) {
+                            LaunchRow(launch: viewModel.launches[index])
+                    } 
                 }
                 if viewModel.lastConnection?.hasMore != false {
                     if viewModel.activeRequest == nil {

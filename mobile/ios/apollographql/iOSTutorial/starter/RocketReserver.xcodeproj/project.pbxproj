@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300D9E1F2B3E3BBB00243CD4 /* LaunchDetails.graphql in Resources */ = {isa = PBXBuildFile; fileRef = 300D9E1E2B3E3BBB00243CD4 /* LaunchDetails.graphql */; };
 		30D992CD2AF2EC28001E325D /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 30D992CC2AF2EC28001E325D /* Apollo */; };
 		30D992CF2AF2EC28001E325D /* ApolloWebSocket in Frameworks */ = {isa = PBXBuildFile; productRef = 30D992CE2AF2EC28001E325D /* ApolloWebSocket */; };
 		30D992D12AF2F3B5001E325D /* apollo-codegen-config.json in Resources */ = {isa = PBXBuildFile; fileRef = 30D992D02AF2F3B5001E325D /* apollo-codegen-config.json */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		300D9E1E2B3E3BBB00243CD4 /* LaunchDetails.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LaunchDetails.graphql; sourceTree = "<group>"; };
 		30D992D02AF2F3B5001E325D /* apollo-codegen-config.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "apollo-codegen-config.json"; sourceTree = "<group>"; };
 		30D992D22AF2F9AD001E325D /* LaunchList.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = LaunchList.graphql; sourceTree = "<group>"; };
 		30D992D72AF2FDF7001E325D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 			children = (
 				66EEA77F2A13C9AD00BB8C72 /* schema.graphqls */,
 				30D992D22AF2F9AD001E325D /* LaunchList.graphql */,
+				300D9E1E2B3E3BBB00243CD4 /* LaunchDetails.graphql */,
 			);
 			path = graphql;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 				30D992D12AF2F3B5001E325D /* apollo-codegen-config.json in Resources */,
 				66F96F9F29FAC0D700713B80 /* Assets.xcassets in Resources */,
 				30D992D32AF2F9AD001E325D /* LaunchList.graphql in Resources */,
+				300D9E1F2B3E3BBB00243CD4 /* LaunchDetails.graphql in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
