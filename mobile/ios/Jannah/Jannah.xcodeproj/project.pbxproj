@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300D9E212B3E51CC00243CD4 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300D9E202B3E51CC00243CD4 /* LoginView.swift */; };
+		300D9E232B3E51E400243CD4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300D9E222B3E51E400243CD4 /* LoginViewModel.swift */; };
+		300D9E252B3E53DE00243CD4 /* WorkflowDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300D9E242B3E53DE00243CD4 /* WorkflowDetailViewModel.swift */; };
+		300D9E272B3E596300243CD4 /* WorkflowDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300D9E262B3E596300243CD4 /* WorkflowDetailView.swift */; };
+		300D9E2A2B3E5A5200243CD4 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 300D9E292B3E5A5200243CD4 /* SDWebImageSwiftUI */; };
 		30680EB52A75C2E40028A7C3 /* JannahApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30680EB42A75C2E40028A7C3 /* JannahApp.swift */; };
 		30680EB72A75C2E40028A7C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30680EB62A75C2E40028A7C3 /* ContentView.swift */; };
 		30680EB92A75C2E50028A7C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30680EB82A75C2E50028A7C3 /* Assets.xcassets */; };
@@ -44,6 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		300D9E202B3E51CC00243CD4 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		300D9E222B3E51E400243CD4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		300D9E242B3E53DE00243CD4 /* WorkflowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowDetailViewModel.swift; sourceTree = "<group>"; };
+		300D9E262B3E596300243CD4 /* WorkflowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowDetailView.swift; sourceTree = "<group>"; };
 		30680EB12A75C2E40028A7C3 /* Jannah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jannah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30680EB42A75C2E40028A7C3 /* JannahApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JannahApp.swift; sourceTree = "<group>"; };
 		30680EB62A75C2E40028A7C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				300D9E2A2B3E5A5200243CD4 /* SDWebImageSwiftUI in Frameworks */,
 				30680EE02A75C7A70028A7C3 /* Apollo in Frameworks */,
 				30680EEB2A75CE870028A7C3 /* JannahApi in Frameworks */,
 				30680EE22A75C7A70028A7C3 /* ApolloWebSocket in Frameworks */,
@@ -128,6 +138,10 @@
 				30680EEE2A75D0990028A7C3 /* WorkflowListViewModel.swift */,
 				30680EF02A75D1070028A7C3 /* View+Alert.swift */,
 				30C184642A79B7E50035F7E1 /* WorkflowRow.swift */,
+				300D9E202B3E51CC00243CD4 /* LoginView.swift */,
+				300D9E222B3E51E400243CD4 /* LoginViewModel.swift */,
+				300D9E242B3E53DE00243CD4 /* WorkflowDetailViewModel.swift */,
+				300D9E262B3E596300243CD4 /* WorkflowDetailView.swift */,
 			);
 			path = Jannah;
 			sourceTree = "<group>";
@@ -192,6 +206,7 @@
 				30680EDF2A75C7A70028A7C3 /* Apollo */,
 				30680EE12A75C7A70028A7C3 /* ApolloWebSocket */,
 				30680EEA2A75CE870028A7C3 /* JannahApi */,
+				300D9E292B3E5A5200243CD4 /* SDWebImageSwiftUI */,
 			);
 			productName = Jannah;
 			productReference = 30680EB12A75C2E40028A7C3 /* Jannah.app */;
@@ -267,6 +282,7 @@
 			mainGroup = 30680EA82A75C2E40028A7C3;
 			packageReferences = (
 				30680EDE2A75C7A70028A7C3 /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				300D9E282B3E5A5200243CD4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 30680EB22A75C2E40028A7C3 /* Products */;
 			projectDirPath = "";
@@ -314,11 +330,15 @@
 			files = (
 				30680EB72A75C2E40028A7C3 /* ContentView.swift in Sources */,
 				30C184652A79B7E50035F7E1 /* WorkflowRow.swift in Sources */,
+				300D9E272B3E596300243CD4 /* WorkflowDetailView.swift in Sources */,
 				30680EEF2A75D09A0028A7C3 /* WorkflowListViewModel.swift in Sources */,
 				30C1846B2A7C60EF0035F7E1 /* WorkflowListView.swift in Sources */,
 				30680EB52A75C2E40028A7C3 /* JannahApp.swift in Sources */,
 				30680EED2A75CF500028A7C3 /* Network.swift in Sources */,
+				300D9E252B3E53DE00243CD4 /* WorkflowDetailViewModel.swift in Sources */,
+				300D9E212B3E51CC00243CD4 /* LoginView.swift in Sources */,
 				30680EF12A75D1070028A7C3 /* View+Alert.swift in Sources */,
+				300D9E232B3E51E400243CD4 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +665,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		300D9E282B3E5A5200243CD4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.2.6;
+			};
+		};
 		30680EDE2A75C7A70028A7C3 /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
@@ -656,6 +684,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		300D9E292B3E5A5200243CD4 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 300D9E282B3E5A5200243CD4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		30680EDF2A75C7A70028A7C3 /* Apollo */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 30680EDE2A75C7A70028A7C3 /* XCRemoteSwiftPackageReference "apollo-ios" */;

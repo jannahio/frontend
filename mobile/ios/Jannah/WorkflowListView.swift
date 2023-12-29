@@ -18,7 +18,9 @@ struct WorkflowListView: View {
         NavigationStack {
             List {
                 ForEach(0..<viewModel.workflows.count, id: \.self) { index in
-                    WorkflowRow(workflow: viewModel.workflows[index])
+                    NavigationLink(destination: WorkflowDetailView(workflowID: viewModel.workflows[index].id)) {
+                        WorkflowRow(workflow: viewModel.workflows[index])
+                        }
                 }
                 if viewModel.lastConnection?.hasMore != false {
                     if viewModel.activeRequest == nil {

@@ -27,6 +27,7 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "NetworkType": return JannahApi.Objects.NetworkType
     case "JannahSites": return JannahApi.Objects.JannahSites
     case "SiteType": return JannahApi.Objects.SiteType
+    case "WorkflowType": return JannahApi.Objects.WorkflowType
     case "JannahBoots": return JannahApi.Objects.JannahBoots
     case "BootType": return JannahApi.Objects.BootType
     case "JannahComputes": return JannahApi.Objects.JannahComputes
@@ -36,7 +37,6 @@ public enum SchemaMetadata: ApolloAPI.SchemaMetadata {
     case "JannahUsers": return JannahApi.Objects.JannahUsers
     case "UserType": return JannahApi.Objects.UserType
     case "JannahWorkflows": return JannahApi.Objects.JannahWorkflows
-    case "WorkflowType": return JannahApi.Objects.WorkflowType
     case "JannahFeedbacks": return JannahApi.Objects.JannahFeedbacks
     case "FeedbackType": return JannahApi.Objects.FeedbackType
     case "JannahStorages": return JannahApi.Objects.JannahStorages
