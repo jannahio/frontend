@@ -1,0 +1,8 @@
+query WorkflowDetails($id: String!){
+    workflow(id: $id) {
+        id
+        name,
+        description,
+        isStarted
+    }
+}

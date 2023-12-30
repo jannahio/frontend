@@ -25,24 +25,57 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import android.util.Log
+import com.apollographql.apollo3.api.ApolloResponse
+import com.apollographql.apollo3.api.Optional
 
+
+//@Composable
+//fun LaunchList(onLaunchClick: (launchId: String) -> Unit) {
+//    var cursor: String? by remember { mutableStateOf(null) }
+//    var response: ApolloResponse<LaunchListQuery.Data>? by remember { mutableStateOf(null) }
+//    var launchList by remember { mutableStateOf(emptyList<LaunchListQuery.Launch>()) }
+//    LaunchedEffect(cursor) {
+//        response = apolloClient.query(LaunchListQuery(Optional.present(cursor))).execute()
+//        launchList = launchList + response?.data?.launches?.launches?.filterNotNull().orEmpty()
+//
+//        val response = apolloClient.query(LaunchListQuery()).execute()
+//        Log.d("LaunchList", "Success ${response.data}")
+//        launchList = response.data?.launches?.launches?.filterNotNull() ?: emptyList()
+//    }
+//
+//    LazyColumn {
+//        items(
+//            launchList.count(),
+//            contentType =  { mutableStateOf(emptyList<LaunchListQuery.Launch>()) }
+//        )
+//        { index ->
+//            val launch = launchList[index]
+//            LaunchItem(launch = launch, onClick = onLaunchClick)
+//        }
+//    }
+//}
 
 @Composable
 fun LaunchList(onLaunchClick: (launchId: String) -> Unit) {
+    var cursor: String? by remember { mutableStateOf(null) }
+    var response: ApolloResponse<LaunchListQuery.Data>? by remember { mutableStateOf(null) }
     var launchList by remember { mutableStateOf(emptyList<LaunchListQuery.Launch>()) }
-    LaunchedEffect(Unit) {
-        val response = apolloClient.query(LaunchListQuery()).execute()
-        Log.d("LaunchList", "Success ${response.data}")
-        launchList = response.data?.launches?.launches?.filterNotNull() ?: emptyList()
+    LaunchedEffect(cursor) {
+        response = apolloClient.query(LaunchListQuery(Optional.present(cursor))).execute()
+        Log.d("LaunchList", "Success ${response?.data}")
+        launchList = launchList + response?.data?.launches?.launches?.filterNotNull().orEmpty()
     }
 
     LazyColumn {
-        items(
-            launchList.count(),
-            contentType =  { mutableStateOf(emptyList<LaunchListQuery.Launch>()) }
-        ) { index ->
+        items(launchList.count()) { index ->
             val launch = launchList[index]
             LaunchItem(launch = launch, onClick = onLaunchClick)
+        }
+        item {
+            if (response?.data?.launches?.hasMore == true) {
+                LoadingItem()
+                cursor = response?.data?.launches?.cursor
+            }
         }
     }
 }
