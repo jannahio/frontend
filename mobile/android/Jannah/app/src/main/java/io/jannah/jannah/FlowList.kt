@@ -1,13 +1,14 @@
 package io.jannah.jannah
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,9 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import android.util.Log
+import coil.compose.AsyncImage
 import com.apollographql.apollo3.api.ApolloResponse
 import com.apollographql.apollo3.api.Optional
+import android.util.Log
+import androidx.compose.foundation.Image
 
 @Composable
 fun FlowList(onFlowClick: (flowId: String) -> Unit) {
@@ -39,8 +42,7 @@ fun FlowList(onFlowClick: (flowId: String) -> Unit) {
     LazyColumn {
         items(workflowList.count()){ index ->
             val workflow = workflowList[index]
-            //FlowItem(flowId = workflow.id, workflow.name, workflow.description, onClick = onFlowClick)
-            FlowItem2(workflow = workflow, onClick = onFlowClick)
+            FlowItem(workflow = workflow, onClick = onFlowClick)
         }
         item {
             if (response?.data?.workflows?.hasMore == true) {
@@ -54,47 +56,31 @@ fun FlowList(onFlowClick: (flowId: String) -> Unit) {
 
 
 @Composable
-private fun FlowItem(flowId: String, flowname: String, flowdescription: String, onClick: (flowId: String) -> Unit) {
-    ListItem(
-        modifier = Modifier.clickable { onClick(flowId) },
-        headlineContent = {
-            // Flow name
-            Text(text = "$flowname")
-        },
-        supportingContent = {
-            // Description
-            Text(text = "$flowdescription")
-        },
-        leadingContent = {
-            // Flow patch
-            Image(
-                modifier = Modifier.size(68.dp, 68.dp),
-                painter = painterResource(R.drawable.ic_launcher_background),
-                contentDescription = "Flow patch"
-            )
-        }
-    )
-}
-
-@Composable
-private fun FlowItem2(workflow: WorkflowListQuery.Workflow, onClick: (flowId: String) -> Unit) {
+private fun FlowItem(workflow: WorkflowListQuery.Workflow, onClick: (flowId: String) -> Unit) {
     ListItem(
         modifier = Modifier.clickable { onClick(workflow.id) },
         headlineContent = {
             // Flow name
-            Text(text = workflow?.name ?: "")
+            Text(text = workflow.name)
         },
         supportingContent = {
             // Description
-            Text(text = workflow?.description ?: "")
+            Text(text = workflow.description)
         },
         leadingContent = {
             // Flow patch
             Image(
-                modifier = Modifier.size(68.dp, 68.dp),
+                modifier = Modifier.size(160.dp, 160.dp),
                 painter = painterResource(R.drawable.ic_launcher_background),
                 contentDescription = "Flow patch"
             )
+//            AsyncImage(
+//                modifier = Modifier.size(68.dp, 68.dp),
+//                model = painterResource(R.drawable.ic_launcher_background),
+//                placeholder = painterResource(R.drawable.ic_launcher_background),
+//                error = painterResource(R.drawable.ic_launcher_background),
+//                contentDescription = "Flow patch"
+//            )
         }
     )
 }

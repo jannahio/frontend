@@ -1,6 +1,7 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
 package com.example.rocketreserver
 
-import androidx.compose.foundation.Image
+import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,25 +12,31 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import coil.compose.AsyncImage
+import com.apollographql.apollo3.api.Error
 import com.apollographql.apollo3.exception.ApolloException
+import  com.apollographql.apollo3.api.ApolloResponse
+import com.example.rocketreserver.LaunchDetailsState.ApplicationError
+import com.example.rocketreserver.LaunchDetailsState.Loading
 import com.example.rocketreserver.LaunchDetailsState.ProtocolError
 import com.example.rocketreserver.LaunchDetailsState.Success
-import com.example.rocketreserver.LaunchDetailsState.ApplicationError
+import kotlinx.coroutines.launch
 
 private sealed interface LaunchDetailsState {
     object Loading : LaunchDetailsState
@@ -41,7 +48,7 @@ private sealed interface LaunchDetailsState {
 
 @Composable
 fun LaunchDetails(launchId: String) {
-    var state by remember { mutableStateOf<LaunchDetailsState>( Loading) }
+    var state by remember { mutableStateOf <LaunchDetailsState> ( Loading ) }
     LaunchedEffect(Unit) {
         state = try {
             val response = apolloClient.query(LaunchDetailsQuery(launchId)).execute()
@@ -61,8 +68,9 @@ fun LaunchDetails(launchId: String) {
         is Success -> LaunchDetails(s.data)
     }
 }
+//private fun LaunchDetails(response: ApolloResponse<LaunchDetailsQuery.Data>) {
 @Composable
-private fun LaunchDetails(response: ApolloResponse<LaunchDetailsQuery.Data>) {
+private fun LaunchDetails(response: LaunchDetailsQuery.Data) {
     Column(
         modifier = Modifier.padding(16.dp)
     ) {
@@ -82,21 +90,21 @@ private fun LaunchDetails(response: ApolloResponse<LaunchDetailsQuery.Data>) {
                 // Mission name
                 Text(
                     style = MaterialTheme.typography.headlineMedium,
-                    text = response?.data?.launch?.mission?.name ?: ""
+                    text = response.launch?.mission?.name ?: ""
                 )
 
                 // Rocket name
                 Text(
                     modifier = Modifier.padding(top = 8.dp),
                     style = MaterialTheme.typography.headlineSmall,
-                    text = response?.data?.launch?.rocket?.name?.let { "🚀 $it" } ?: "",
+                    text = response.launch?.rocket?.name?.let { "🚀 $it" } ?: "",
                 )
 
                 // Site
                 Text(
                     modifier = Modifier.padding(top = 8.dp),
                     style = MaterialTheme.typography.titleMedium,
-                    text = response?.data?.launch?.site ?: "",
+                    text = response.launch?.site ?: "",
                 )
             }
         }
