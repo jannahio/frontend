@@ -92,15 +92,14 @@ export default {
         // Transform the previous result with new data
         updateQuery: (previousResult, { fetchMoreResult }) => {
           const newWorkflows = fetchMoreResult.workflows.workflows
-          const hasMore = fetchMoreResult.workflows.workflows.hasMore
-          this.showMoreEnabled = hasMore
+          this.showMoreEnabled = fetchMoreResult.workflows.hasMore
           this.cursor = fetchMoreResult.workflows.cursor
           return {
             workflows: {
               cursor: this.cursor,
               hasMore: fetchMoreResult.workflows.hasMore,
               __typename: previousResult.workflows.__typename,
-              // Merging the tag list
+              // Merging the workflow list
               workflows: [...previousResult.workflows.workflows, ...newWorkflows],
             },
           }
