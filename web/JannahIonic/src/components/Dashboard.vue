@@ -24,36 +24,47 @@ export default {
   data() {
       return {
         error: '',
+        cursor: "1",
+        showMoreEnabled: false,
       };
     },
   apollo: {
       allWorkflows: {
         query: gql`
-            query WorkflowList{
-                workflows{
-                  cursor,
-                  hasMore,
-                  workflows{
-                    id,
-                    name,
-                    description
+                  query WorkflowList($cursor: String){
+                      workflows(cursor: $cursor){
+                          cursor,
+                          hasMore,
+                          workflows{
+                              id,
+                              name,
+                              description
+                          }
+                      }
                   }
-                }
-            }
         `,
+        // Initial variables
+        variables: {
+          cursor: "1",
+        },
         data () {
           return {
             // Initialize your apollo data
             allWorkflows: [],
-            loadingWorkflowQueriesCount: 0
+            loadingWorkflowQueriesCount: 0,
+            cursor: "1",
+            showMoreEnabled: true
           }
         },
         update (data) {
-          console.log(data);
+          console.log("update data: ", data);
+          const hasMore = data.workflows.hasMore
+          this.showMoreEnabled = hasMore
+          this.cursor = data.workflows.cursor
           return data.workflows.workflows;
         },
         // Optional result hook
-        result ({ data, loading, networkStatus }) {
+        result ({ data, loading, networkStatus, fetchMore }) {
           console.log('We got some result!')
         },
         // Error handling
@@ -70,8 +81,37 @@ export default {
         },
       },
     },
+  methods: {
+    showMore () {
+      // Fetch more data and transform the original result
+      this.$apollo.queries.allWorkflows.fetchMore({
+        // New variables
+        variables: {
+          cursor: this.cursor,
+        },
+        // Transform the previous result with new data
+        updateQuery: (previousResult, { fetchMoreResult }) => {
+          const newWorkflows = fetchMoreResult.workflows.workflows
+          const hasMore = fetchMoreResult.workflows.workflows.hasMore
+          this.showMoreEnabled = hasMore
+          this.cursor = fetchMoreResult.workflows.cursor
+          return {
+            workflows: {
+              cursor: this.cursor,
+              hasMore: fetchMoreResult.workflows.hasMore,
+              __typename: previousResult.workflows.__typename,
+              // Merging the tag list
+              workflows: [...previousResult.workflows.workflows, ...newWorkflows],
+            },
+          }
+
+        },
+      })
+    },
+  },
 };
 </script>
+
 
 <template>
   <div class="workflow">
@@ -82,6 +122,9 @@ export default {
       <li v-for="workflow of allWorkflows" :key="workflow.name">
         {{ workflow.name }} - {{ workflow.description }}
       </li>
+      <div class="actions">
+        <button v-if="showMoreEnabled" @click="showMore">Show more</button>
+      </div>
     </ul>
   </div>
 </template>

@@ -33,7 +33,7 @@ import { defineCustomElements } from '@ionic/pwa-elements/loader';
 
 const apolloClient = new ApolloClient({
   // You should use an absolute URL here
-  uri: 'http://localhost:8080/graphql'
+  uri: 'http://localhost:8000/graphql',
 })
 
 import { createApolloProvider } from '@vue/apollo-option';
