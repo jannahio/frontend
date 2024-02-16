@@ -53,6 +53,7 @@
 		300D9E222B3E51E400243CD4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		300D9E242B3E53DE00243CD4 /* WorkflowDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowDetailViewModel.swift; sourceTree = "<group>"; };
 		300D9E262B3E596300243CD4 /* WorkflowDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkflowDetailView.swift; sourceTree = "<group>"; };
+		3034BD772B7DA82A00679A38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		30680EB12A75C2E40028A7C3 /* Jannah.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jannah.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30680EB42A75C2E40028A7C3 /* JannahApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JannahApp.swift; sourceTree = "<group>"; };
 		30680EB62A75C2E40028A7C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		30680EB32A75C2E40028A7C3 /* Jannah */ = {
 			isa = PBXGroup;
 			children = (
+				3034BD772B7DA82A00679A38 /* Info.plist */,
 				30C1846A2A7C60EF0035F7E1 /* WorkflowListView.swift */,
 				30680EB42A75C2E40028A7C3 /* JannahApp.swift */,
 				30680EB62A75C2E40028A7C3 /* ContentView.swift */,
@@ -256,7 +258,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					30680EB02A75C2E40028A7C3 = {
 						CreatedOnToolsVersion = 14.3;
@@ -283,6 +285,7 @@
 			packageReferences = (
 				30680EDE2A75C7A70028A7C3 /* XCRemoteSwiftPackageReference "apollo-ios" */,
 				300D9E282B3E5A5200243CD4 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				309229FA2B7C880900F1BCE9 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 30680EB22A75C2E40028A7C3 /* Products */;
 			projectDirPath = "";
@@ -411,6 +414,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -471,6 +475,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -500,6 +505,7 @@
 				DEVELOPMENT_TEAM = L4GBN653F8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Jannah/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -529,6 +535,7 @@
 				DEVELOPMENT_TEAM = L4GBN653F8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Jannah/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -679,6 +686,14 @@
 			requirement = {
 				kind = upToNextMinorVersion;
 				minimumVersion = 1.2.0;
+			};
+		};
+		309229FA2B7C880900F1BCE9 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.11;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -11,5 +11,5 @@ import Apollo
 class Network {
   static let shared = Network()
 
-  private(set) lazy var apollo = ApolloClient(url: URL(string: "http://devjannahio.local:8000/graphql")!)
+  private(set) lazy var apollo = ApolloClient(url: URL(string: "http://uxjannahio.local/graphql")!)
 }
